@@ -1,0 +1,110 @@
+
+	org	$80010000
+
+text	group				; main text group
+bss	group	bss			; main data group
+
+	section	.rdata,text	; main sections
+	section	.text,text
+	section	.data,text
+	section	.sdata,text
+
+	section	.sbss,bss	; The bss sections
+	section	.bss,bss
+
+	;
+	; Object files
+	;
+
+	include	"obj\d_main.obj"
+	include	"obj\info.obj"
+	include	"obj\sprinfo.obj"
+	include	"obj\g_game.obj"
+	include	"obj\p_base.obj"
+	include	"obj\p_ceilng.obj"
+	include	"obj\p_change.obj"
+	include	"obj\p_doors.obj"
+	include	"obj\p_enemy.obj"
+	include	"obj\p_floor.obj"
+	include	"obj\p_inter.obj"
+	include	"obj\p_lights.obj"
+	include	"obj\p_map.obj"
+	include	"obj\p_maputl.obj"
+	include	"obj\p_mobj.obj"
+	include	"obj\p_move.obj"
+	include	"obj\p_plats.obj"
+	include	"obj\p_pspr.obj"
+	include	"obj\p_setup.obj"
+	include	"obj\p_shoot.obj"
+	include	"obj\p_sight.obj"
+	include	"obj\p_slide.obj"
+	include	"obj\p_spec.obj"
+	include	"obj\p_switch.obj"
+	include	"obj\p_telept.obj"
+	include	"obj\p_tick.obj"
+	include	"obj\p_user.obj"
+	include	"obj\r_phase1.obj"
+	include	"obj\r_phase2.obj"
+	include	"obj\r_data.obj"
+	include	"obj\r_main.obj"
+	include	"obj\vsprintf.obj"
+	include	"obj\w_wad.obj"
+	include	"obj\psx_file.obj"
+	include	"obj\z_zone.obj"
+	include	"obj\psxmain.obj"
+	;include	"obj\psxmain_mip.obj" ;//-----MIPS
+	include	"obj\l_main.obj"
+	include	"obj\t_main.obj"
+	include	"obj\m_main.obj"
+	include	"obj\c_main.obj"
+	include	"obj\pw_main.obj"
+	include	"obj\cf_main.obj"
+	include	"obj\m_password.obj"
+	include	"obj\st_main.obj"
+	include	"obj\am_main.obj"
+	include	"obj\in_main.obj"
+	include	"obj\f_main.obj"
+	include	"obj\o_main.obj"
+	include	"obj\m_fixed.obj"
+	include	"obj\tables.obj"
+	include	"obj\psxcd.obj"
+	include	"obj\s_sound.obj"
+	include	"obj\psxspu.obj"
+	include	"obj\psxcmd.obj"
+	include	"obj\wessapip.obj"
+	include	"obj\wessapi.obj"
+	include	"obj\wessarc.obj"
+	include	"obj\wessapit.obj"
+	include	"obj\wessseq.obj"
+	include	"obj\seqload.obj"
+	include	"obj\lcdload.obj"
+	include	"obj\wessapim.obj"
+	include	"obj\seqloadr.obj"
+
+	include	"obj\wessbase.obj"
+
+	include "obj\snmain.obj"
+
+	;
+	; Library files
+	;
+
+	inclib "C:\psyq\lib\libsn.lib"
+	inclib "C:\psyq\lib\libapi.lib"
+	inclib "C:\psyq\lib\libetc.lib"
+	inclib "C:\psyq\lib\libgpu.lib"
+	inclib "C:\psyq\lib\libgte.lib"
+	inclib "C:\psyq\lib\libspu.lib"
+	inclib "C:\psyq\lib\libc.lib"
+	inclib "C:\psyq\lib\libcd.lib"
+	inclib "C:\psyq\lib\libc2.lib"
+	inclib "C:\psyq\lib\libcomb.lib"
+
+	; The following line initializes the program counter register so
+	; that the downloader sets the entry point before the program
+	; is executed.  SN_ENTRY_POINT is defined in a module in
+	; ligsn.lib and clears the bss, sets up the heap, etc., before
+	; calling main().
+
+	regs	pc=__SN_ENTRY_POINT	; entry point
+
