@@ -28,6 +28,6 @@ https://github.com/Lameguy64/mkpsxiso by lameguy64
 Special thanks to my brothers for the help to the community in DoomWorld and Kaiser since he is the only one to see the progress of my work and helps me in several occasions.
 
 News:
-* No clip cheat code from PSYDoom.
-* VRAM Viewer added from Master Edition PSXDoom.
+* No clip cheat code from PsyDoom.
+* VRAM Viewer added from Master Edition PsxDoom.
 * FPS Counter that can be deactivate/activate in the code itself.
