@@ -10,7 +10,7 @@ http://www.psxdev.net/help/psyq_install.html
 Once you have completed the installation process, go to copy the files in the PSYQ folder and it is necessary for the compilation.
 
 
-Now everything is complete, copy the PSXDOOM_FULL folder to the root "C:" of your hard drive.
+Now everything is complete, copy the PSXDOOM-RE folder to the root "C:" of your hard drive.
 
 You need to copy the PSXDOOM SLUS_000.77 game files, with everything and their folders, the MOVIE.STR file is impossible to copy in Windows, it is the only file that is previously in the ABIN folder.
 You run the MAKEFILE.bat to compile and create the main.exe file, it will be automatically copied to the GAME folder.
