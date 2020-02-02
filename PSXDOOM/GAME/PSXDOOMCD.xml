@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- MKPSXISO example XML script -->
+
+<iso_project image_name="PSXDOOM.bin" cue_sheet="PSXDOOM.cue">
+
+	<!-- <track>
+		Specifies a track to the ISO project. This example element creates a data
+		track for storing data files and CD-XA/STR streams.
+	
+		Only one data track is allowed and data tracks must only be specified as the
+		first track in the ISO image and cannot	be specified after an audio track.
+		
+		Attributes:
+			type		- Track type (either data or audio).
+			source		- For audio tracks only, specifies the file name of a wav audio
+						  file to use for the audio track.	
+	-->
+
+	<track type = "data" >
+	
+		<identifiers
+			system		= "PLAYSTATION"
+			application	= "PLAYSTATION"
+			volume		= "PSXDOOM"
+			volumeset	= "PSXDOOM"
+			publisher	= "WILLIAMS ENTERTAINMENT"
+			datapreparer	= "WILLIAMS ENTERTAINMENT"
+		/>
+		
+
+		<license file = "licensea.dat"/>
+		
+
+		<directory_tree>
+		
+			<file name = "SYSTEM.CNF"	type = "data"	source="CD\SYSTEM.CNF"/>
+			<file name = "SLUS_000.77"	type = "data"	source="CD\SLUS_000.77"/>
+			
+			<dir name = "PSXDOOM">
+
+				<dir name = "ABIN">
+					<file name = "DEMO1.LMP"	type = "data"	source="CD\PSXDOOM\ABIN\DEMO1.LMP"/>
+					<file name = "DEMO2.LMP"	type = "data"	source="CD\PSXDOOM\ABIN\DEMO2.LMP"/>
+					<file name = "MAPSPR60.IMG"	type = "data"	source="CD\PSXDOOM\ABIN\MAPSPR60.IMG"/>
+					<file name = "MOVIE.STR"	type = "str"	source="CD\PSXDOOM\ABIN\MOVIE.STR"/>
+					<file name = "PSXDOOM.EXE"	type = "data"	source="MAIN.EXE"/>	<!--Discard original CD\PSXDOOM\ABIN\PSXDOOM.EXE-->
+					<file name = "PSXDOOM.WAD"	type = "data"	source="CD\PSXDOOM\ABIN\PSXDOOM.WAD"/>
+				</dir>
+
+				<dir name = "MAPDIR0">
+					<file name = "MAP01.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAP01.WAD"/>
+					<file name = "MAP02.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAP02.WAD"/>
+					<file name = "MAP03.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAP03.WAD"/>
+					<file name = "MAP04.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAP04.WAD"/>
+					<file name = "MAP05.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAP05.WAD"/>
+					<file name = "MAP06.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAP06.WAD"/>
+					<file name = "MAP07.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAP07.WAD"/>
+					<file name = "MAP08.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAP08.WAD"/>
+					<file name = "MAPSPR01.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPSPR01.IMG"/>
+					<file name = "MAPSPR02.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPSPR02.IMG"/>
+					<file name = "MAPSPR03.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPSPR03.IMG"/>
+					<file name = "MAPSPR04.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPSPR04.IMG"/>
+					<file name = "MAPSPR05.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPSPR05.IMG"/>
+					<file name = "MAPSPR06.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPSPR06.IMG"/>
+					<file name = "MAPSPR07.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPSPR07.IMG"/>
+					<file name = "MAPSPR08.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPSPR08.IMG"/>
+					<file name = "MAPTEX01.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPTEX01.IMG"/>
+					<file name = "MAPTEX02.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPTEX02.IMG"/>
+					<file name = "MAPTEX03.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPTEX03.IMG"/>
+					<file name = "MAPTEX04.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPTEX04.IMG"/>
+					<file name = "MAPTEX05.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPTEX05.IMG"/>
+					<file name = "MAPTEX06.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPTEX06.IMG"/>
+					<file name = "MAPTEX07.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPTEX07.IMG"/>
+					<file name = "MAPTEX08.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR0\MAPTEX08.IMG"/>
+				</dir>
+
+				<dir name = "MAPDIR1">
+					<file name = "MAP09.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAP09.WAD"/>
+					<file name = "MAP10.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAP10.WAD"/>
+					<file name = "MAP11.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAP11.WAD"/>
+					<file name = "MAP12.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAP12.WAD"/>
+					<file name = "MAP13.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAP13.WAD"/>
+					<file name = "MAP14.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAP14.WAD"/>
+					<file name = "MAP15.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAP15.WAD"/>
+					<file name = "MAP16.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAP16.WAD"/>
+					<file name = "MAPSPR09.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPSPR09.IMG"/>
+					<file name = "MAPSPR10.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPSPR10.IMG"/>
+					<file name = "MAPSPR11.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPSPR11.IMG"/>
+					<file name = "MAPSPR12.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPSPR12.IMG"/>
+					<file name = "MAPSPR13.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPSPR13.IMG"/>
+					<file name = "MAPSPR14.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPSPR14.IMG"/>
+					<file name = "MAPSPR15.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPSPR15.IMG"/>
+					<file name = "MAPSPR16.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPSPR16.IMG"/>
+					<file name = "MAPTEX09.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPTEX09.IMG"/>
+					<file name = "MAPTEX10.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPTEX10.IMG"/>
+					<file name = "MAPTEX11.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPTEX11.IMG"/>
+					<file name = "MAPTEX12.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPTEX12.IMG"/>
+					<file name = "MAPTEX13.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPTEX13.IMG"/>
+					<file name = "MAPTEX14.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPTEX14.IMG"/>
+					<file name = "MAPTEX15.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPTEX15.IMG"/>
+					<file name = "MAPTEX16.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR1\MAPTEX16.IMG"/>
+				</dir>
+
+				<dir name = "MAPDIR2">
+					<file name = "MAP17.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAP17.WAD"/>
+					<file name = "MAP18.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAP18.WAD"/>
+					<file name = "MAP19.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAP19.WAD"/>
+					<file name = "MAP20.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAP20.WAD"/>
+					<file name = "MAP21.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAP21.WAD"/>
+					<file name = "MAP22.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAP22.WAD"/>
+					<file name = "MAP23.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAP23.WAD"/>
+					<file name = "MAP24.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAP24.WAD"/>
+					<file name = "MAPSPR17.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPSPR17.IMG"/>
+					<file name = "MAPSPR18.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPSPR18.IMG"/>
+					<file name = "MAPSPR19.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPSPR19.IMG"/>
+					<file name = "MAPSPR20.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPSPR20.IMG"/>
+					<file name = "MAPSPR21.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPSPR21.IMG"/>
+					<file name = "MAPSPR22.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPSPR22.IMG"/>
+					<file name = "MAPSPR23.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPSPR23.IMG"/>
+					<file name = "MAPSPR24.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPSPR24.IMG"/>
+					<file name = "MAPTEX17.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPTEX17.IMG"/>
+					<file name = "MAPTEX18.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPTEX18.IMG"/>
+					<file name = "MAPTEX19.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPTEX19.IMG"/>
+					<file name = "MAPTEX20.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPTEX20.IMG"/>
+					<file name = "MAPTEX21.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPTEX21.IMG"/>
+					<file name = "MAPTEX22.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPTEX22.IMG"/>
+					<file name = "MAPTEX23.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPTEX23.IMG"/>
+					<file name = "MAPTEX24.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR2\MAPTEX24.IMG"/>
+				</dir>
+
+				<dir name = "MAPDIR3">
+					<file name = "MAP25.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAP25.WAD"/>
+					<file name = "MAP26.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAP26.WAD"/>
+					<file name = "MAP27.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAP27.WAD"/>
+					<file name = "MAP28.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAP28.WAD"/>
+					<file name = "MAP29.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAP29.WAD"/>
+					<file name = "MAP30.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAP30.WAD"/>
+					<file name = "MAP31.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAP31.WAD"/>
+					<file name = "MAP32.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAP32.WAD"/>
+					<file name = "MAPSPR25.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPSPR25.IMG"/>
+					<file name = "MAPSPR26.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPSPR26.IMG"/>
+					<file name = "MAPSPR27.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPSPR27.IMG"/>
+					<file name = "MAPSPR28.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPSPR28.IMG"/>
+					<file name = "MAPSPR29.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPSPR29.IMG"/>
+					<file name = "MAPSPR30.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPSPR30.IMG"/>
+					<file name = "MAPSPR31.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPSPR31.IMG"/>
+					<file name = "MAPSPR32.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPSPR32.IMG"/>
+					<file name = "MAPTEX25.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPTEX25.IMG"/>
+					<file name = "MAPTEX26.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPTEX26.IMG"/>
+					<file name = "MAPTEX27.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPTEX27.IMG"/>
+					<file name = "MAPTEX28.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPTEX28.IMG"/>
+					<file name = "MAPTEX29.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPTEX29.IMG"/>
+					<file name = "MAPTEX30.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPTEX30.IMG"/>
+					<file name = "MAPTEX31.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPTEX31.IMG"/>
+					<file name = "MAPTEX32.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR3\MAPTEX32.IMG"/>
+				</dir>
+
+				<dir name = "MAPDIR4">
+					<file name = "MAP33.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAP33.WAD"/>
+					<file name = "MAP34.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAP34.WAD"/>
+					<file name = "MAP35.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAP35.WAD"/>
+					<file name = "MAP36.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAP36.WAD"/>
+					<file name = "MAP37.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAP37.WAD"/>
+					<file name = "MAP38.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAP38.WAD"/>
+					<file name = "MAP39.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAP39.WAD"/>
+					<file name = "MAP40.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAP40.WAD"/>
+					<file name = "MAPSPR33.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPSPR33.IMG"/>
+					<file name = "MAPSPR34.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPSPR34.IMG"/>
+					<file name = "MAPSPR35.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPSPR35.IMG"/>
+					<file name = "MAPSPR36.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPSPR36.IMG"/>
+					<file name = "MAPSPR37.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPSPR37.IMG"/>
+					<file name = "MAPSPR38.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPSPR38.IMG"/>
+					<file name = "MAPSPR39.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPSPR39.IMG"/>
+					<file name = "MAPSPR40.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPSPR40.IMG"/>
+					<file name = "MAPTEX33.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPTEX33.IMG"/>
+					<file name = "MAPTEX34.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPTEX34.IMG"/>
+					<file name = "MAPTEX35.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPTEX35.IMG"/>
+					<file name = "MAPTEX36.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPTEX36.IMG"/>
+					<file name = "MAPTEX37.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPTEX37.IMG"/>
+					<file name = "MAPTEX38.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPTEX38.IMG"/>
+					<file name = "MAPTEX39.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPTEX39.IMG"/>
+					<file name = "MAPTEX40.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR4\MAPTEX40.IMG"/>
+				</dir>
+
+				<dir name = "MAPDIR5">
+					<file name = "MAP41.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAP41.WAD"/>
+					<file name = "MAP42.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAP42.WAD"/>
+					<file name = "MAP43.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAP43.WAD"/>
+					<file name = "MAP44.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAP44.WAD"/>
+					<file name = "MAP45.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAP45.WAD"/>
+					<file name = "MAP46.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAP46.WAD"/>
+					<file name = "MAP47.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAP47.WAD"/>
+					<file name = "MAP48.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAP48.WAD"/>
+					<file name = "MAPSPR41.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPSPR41.IMG"/>
+					<file name = "MAPSPR42.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPSPR42.IMG"/>
+					<file name = "MAPSPR43.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPSPR43.IMG"/>
+					<file name = "MAPSPR44.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPSPR44.IMG"/>
+					<file name = "MAPSPR45.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPSPR45.IMG"/>
+					<file name = "MAPSPR46.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPSPR46.IMG"/>
+					<file name = "MAPSPR47.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPSPR47.IMG"/>
+					<file name = "MAPSPR48.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPSPR48.IMG"/>
+					<file name = "MAPTEX41.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPTEX41.IMG"/>
+					<file name = "MAPTEX42.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPTEX42.IMG"/>
+					<file name = "MAPTEX43.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPTEX43.IMG"/>
+					<file name = "MAPTEX44.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPTEX44.IMG"/>
+					<file name = "MAPTEX45.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPTEX45.IMG"/>
+					<file name = "MAPTEX46.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPTEX46.IMG"/>
+					<file name = "MAPTEX47.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPTEX47.IMG"/>
+					<file name = "MAPTEX48.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR5\MAPTEX48.IMG"/>
+				</dir>
+
+				<dir name = "MAPDIR6">
+					<file name = "MAP49.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAP49.WAD"/>
+					<file name = "MAP50.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAP50.WAD"/>
+					<file name = "MAP51.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAP51.WAD"/>
+					<file name = "MAP52.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAP52.WAD"/>
+					<file name = "MAP53.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAP53.WAD"/>
+					<file name = "MAP54.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAP54.WAD"/>
+					<file name = "MAP55.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAP55.WAD"/>
+					<file name = "MAP56.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAP56.WAD"/>
+					<file name = "MAPSPR49.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPSPR49.IMG"/>
+					<file name = "MAPSPR50.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPSPR50.IMG"/>
+					<file name = "MAPSPR51.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPSPR51.IMG"/>
+					<file name = "MAPSPR52.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPSPR52.IMG"/>
+					<file name = "MAPSPR53.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPSPR53.IMG"/>
+					<file name = "MAPSPR54.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPSPR54.IMG"/>
+					<file name = "MAPSPR55.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPSPR55.IMG"/>
+					<file name = "MAPSPR56.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPSPR56.IMG"/>
+					<file name = "MAPTEX49.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPTEX49.IMG"/>
+					<file name = "MAPTEX50.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPTEX50.IMG"/>
+					<file name = "MAPTEX51.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPTEX51.IMG"/>
+					<file name = "MAPTEX52.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPTEX52.IMG"/>
+					<file name = "MAPTEX53.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPTEX53.IMG"/>
+					<file name = "MAPTEX54.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPTEX54.IMG"/>
+					<file name = "MAPTEX55.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPTEX55.IMG"/>
+					<file name = "MAPTEX56.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR6\MAPTEX56.IMG"/>
+				</dir>
+
+				<dir name = "MAPDIR7">
+					<file name = "MAP57.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAP57.WAD"/>
+					<file name = "MAP58.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAP58.WAD"/>
+					<file name = "MAP59.WAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAP59.WAD"/>
+					<file name = "MAP60.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAP60.PAD"/>
+					<file name = "MAP61.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAP61.PAD"/>
+					<file name = "MAP62.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAP62.PAD"/>
+					<file name = "MAP63.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAP63.PAD"/>
+					<file name = "MAP64.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAP64.PAD"/>
+					<file name = "MAPSPR57.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPSPR57.IMG"/>
+					<file name = "MAPSPR58.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPSPR58.IMG"/>
+					<file name = "MAPSPR59.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPSPR59.IMG"/>
+					<file name = "MAPSPR60.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPSPR60.PAD"/>
+					<file name = "MAPSPR61.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPSPR61.PAD"/>
+					<file name = "MAPSPR62.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPSPR62.PAD"/>
+					<file name = "MAPSPR63.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPSPR63.PAD"/>
+					<file name = "MAPSPR64.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPSPR64.PAD"/>
+					<file name = "MAPTEX57.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPTEX57.IMG"/>
+					<file name = "MAPTEX58.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPTEX58.IMG"/>
+					<file name = "MAPTEX59.IMG"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPTEX59.IMG"/>
+					<file name = "MAPTEX60.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPTEX60.PAD"/>
+					<file name = "MAPTEX61.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPTEX61.PAD"/>
+					<file name = "MAPTEX62.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPTEX62.PAD"/>
+					<file name = "MAPTEX63.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPTEX63.PAD"/>
+					<file name = "MAPTEX64.PAD"	type = "data"	source="CD\PSXDOOM\MAPDIR7\MAPTEX64.PAD"/>
+				</dir>
+
+				<dir name = "MUSIC">
+					<file name = "DOOMSFX.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\DOOMSFX.LCD"/>
+					<file name = "DOOMSND.WMD"	type = "data"	source="CD\PSXDOOM\MUSIC\DOOMSND.WMD"/>
+					<file name = "MUSLEV1.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV1.LCD"/>
+					<file name = "MUSLEV10.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV10.LCD"/>
+					<file name = "MUSLEV11.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV11.LCD"/>
+					<file name = "MUSLEV12.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV12.LCD"/>
+					<file name = "MUSLEV13.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV13.LCD"/>
+					<file name = "MUSLEV14.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV14.LCD"/>
+					<file name = "MUSLEV15.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV15.LCD"/>
+					<file name = "MUSLEV16.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV16.LCD"/>
+					<file name = "MUSLEV17.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV17.LCD"/>
+					<file name = "MUSLEV18.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV18.LCD"/>
+					<file name = "MUSLEV19.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV19.LCD"/>
+					<file name = "MUSLEV2.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV2.LCD"/>
+					<file name = "MUSLEV20.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV20.LCD"/>
+					<file name = "MUSLEV3.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV3.LCD"/>
+					<file name = "MUSLEV4.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV4.LCD"/>
+					<file name = "MUSLEV5.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV5.LCD"/>
+					<file name = "MUSLEV6.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV6.LCD"/>
+					<file name = "MUSLEV7.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV7.LCD"/>
+					<file name = "MUSLEV8.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV8.LCD"/>
+					<file name = "MUSLEV9.LCD"	type = "data"	source="CD\PSXDOOM\MUSIC\MUSLEV9.LCD"/>
+				</dir>
+
+				<dir name = "SNDMAPS1">
+					<file name = "MAP01.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP01.LCD"/>
+					<file name = "MAP02.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP02.LCD"/>
+					<file name = "MAP03.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP03.LCD"/>
+					<file name = "MAP04.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP04.LCD"/>
+					<file name = "MAP05.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP05.LCD"/>
+					<file name = "MAP06.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP06.LCD"/>
+					<file name = "MAP07.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP07.LCD"/>
+					<file name = "MAP08.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP08.LCD"/>
+					<file name = "MAP09.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP09.LCD"/>
+					<file name = "MAP10.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP10.LCD"/>
+					<file name = "MAP11.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP11.LCD"/>
+					<file name = "MAP12.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP12.LCD"/>
+					<file name = "MAP13.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP13.LCD"/>
+					<file name = "MAP14.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP14.LCD"/>
+					<file name = "MAP15.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP15.LCD"/>
+					<file name = "MAP16.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP16.LCD"/>
+					<file name = "MAP17.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP17.LCD"/>
+					<file name = "MAP18.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP18.LCD"/>
+					<file name = "MAP19.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP19.LCD"/>
+					<file name = "MAP20.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS1\MAP20.LCD"/>
+				</dir>
+
+				<dir name = "SNDMAPS2">
+					<file name = "MAP21.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP21.LCD"/>
+					<file name = "MAP22.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP22.LCD"/>
+					<file name = "MAP23.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP23.LCD"/>
+					<file name = "MAP24.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP24.LCD"/>
+					<file name = "MAP25.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP25.LCD"/>
+					<file name = "MAP26.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP26.LCD"/>
+					<file name = "MAP27.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP27.LCD"/>
+					<file name = "MAP28.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP28.LCD"/>
+					<file name = "MAP29.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP29.LCD"/>
+					<file name = "MAP30.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP30.LCD"/>
+					<file name = "MAP31.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP31.LCD"/>
+					<file name = "MAP32.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP32.LCD"/>
+					<file name = "MAP33.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP33.LCD"/>
+					<file name = "MAP34.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP34.LCD"/>
+					<file name = "MAP35.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP35.LCD"/>
+					<file name = "MAP36.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP36.LCD"/>
+					<file name = "MAP37.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP37.LCD"/>
+					<file name = "MAP38.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP38.LCD"/>
+					<file name = "MAP39.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP39.LCD"/>
+					<file name = "MAP40.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS2\MAP40.LCD"/>
+				</dir>
+
+				<dir name = "SNDMAPS3">
+					<file name = "MAP41.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP41.LCD"/>
+					<file name = "MAP42.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP42.LCD"/>
+					<file name = "MAP43.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP43.LCD"/>
+					<file name = "MAP44.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP44.LCD"/>
+					<file name = "MAP45.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP45.LCD"/>
+					<file name = "MAP46.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP46.LCD"/>
+					<file name = "MAP47.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP47.LCD"/>
+					<file name = "MAP48.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP48.LCD"/>
+					<file name = "MAP49.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP49.LCD"/>
+					<file name = "MAP50.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP50.LCD"/>
+					<file name = "MAP51.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP51.LCD"/>
+					<file name = "MAP52.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP52.LCD"/>
+					<file name = "MAP53.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP53.LCD"/>
+					<file name = "MAP54.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP54.LCD"/>
+					<file name = "MAP55.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP55.LCD"/>
+					<file name = "MAP56.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP56.LCD"/>
+					<file name = "MAP57.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP57.LCD"/>
+					<file name = "MAP58.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP58.LCD"/>
+					<file name = "MAP59.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP59.LCD"/>
+					<file name = "MAP60.LCD"	type = "data"	source="CD\PSXDOOM\SNDMAPS3\MAP60.LCD"/>
+					<dummy sectors="2048"/>
+				</dir>
+
+				<dir name = "CDAUDIO">
+					<file name = "DOOMMAIN.RAW"	type = "da"	 source = "CD\PSXDOOM\CDAUDIO\DOOMMAIN.RAW"/>
+					<file name = "DMSELECT.RAW"	type = "da"	 source = "CD\PSXDOOM\CDAUDIO\DMSELECT.RAW"/>
+					<file name = "CREDITS.RAW"	type = "da"	 source = "CD\PSXDOOM\CDAUDIO\CREDITS.RAW"/>
+					<file name = "COMPLETE.RAW"	type = "da"	 source = "CD\PSXDOOM\CDAUDIO\COMPLETE.RAW"/>
+					<file name = "DOOMRAVE.RAW"	type = "da"	 source = "CD\PSXDOOM\CDAUDIO\DOOMRAVE.RAW"/>
+					<file name = "DOOM1FIN.RAW"	type = "da"	 source = "CD\PSXDOOM\CDAUDIO\DOOM1FIN.RAW"/>
+					<file name = "FINALE1.RAW"	type = "da"	 source = "CD\PSXDOOM\CDAUDIO\FINALE1.RAW"/>
+				</dir>
+
+			</dir>
+
+		
+		</directory_tree>
+		
+	</track>
+	
+</iso_project>
