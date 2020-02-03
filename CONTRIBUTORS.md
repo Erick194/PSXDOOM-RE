@@ -4,6 +4,7 @@ PSXDOOM RE contributors (sorted alphabetically)
 * **[Darragh Coy (intacowetrust)](https://github.com/BodbDearg)**
 
     * Various information and code for PSX DOOM based on his own extensive reverse engineering efforts, including:
+    
            * Suggestions for changing names in variables:
            
                cheatfullbright -> viewlighting
