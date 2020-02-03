@@ -13,9 +13,10 @@ Once you have completed the installation process, go to copy the files in the PS
 Now everything is complete, copy the PSXDOOM-RE folder to the root "C:" of your hard drive.
 
 You need to copy the PSXDOOM SLUS_000.77 game files, with everything and their folders, the MOVIE.STR file is impossible to copy in Windows, it is the only file that is previously in the ABIN folder.
+
 You run the MAKEFILE.bat to compile and create the main.exe file, it will be automatically copied to the GAME folder.
-In the GAME folder, you run the MAKE_CD.bat file, it will create the CD image, and it will also create 2 necessary files that are "PSXCDABS.C and PSXCDABS.H"
-these are automatically copied to the previous folder, this is essential since if you modify the code or the files of the game these will change your LBA address and the file size, which requires compiling it again to avoid getting loading errors.
+
+In the GAME folder, you run the MAKE_CD.bat file, it will create the CD image, and it will also create 2 necessary files that are "PSXCDABS.C and PSXCDABS.H" these are automatically copied to the previous folder, this is essential since if you modify the code or the files of the game these will change your LBA address and the file size, which requires compiling it again to avoid getting loading errors.
 
 
 Notes:
