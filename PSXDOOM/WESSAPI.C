@@ -1,6 +1,6 @@
 // Reconstruido por Erick Vasquez Garcia 16/05/2019 [GEC]
 // Update_1 20/10/2019 [GEC]
-// Update_2 32/01/2020 [GEC]
+// Update_2 31/01/2020 [GEC]
 
     /*-----------------------------------------------------------------*/
     /*
@@ -685,7 +685,7 @@ int wess_load_module (void *wmd_ptr,
 				{
 					(pm_stat->pvoicestattbl + i)->patchtype =
 						(pm_stat->ppat_info + n)->pat_grp_hdr.patch_id;
-					(pm_stat->pvoicestattbl + i)->refindx = indx++;//ó 0
+					(pm_stat->pvoicestattbl + i)->refindx = indx++;//Ã³ 0
 				}
 				else {
 					n++;
