@@ -435,13 +435,12 @@ boolean PA_CrossSubsector(subsector_t *sub)//L800242CC
 /*
 =====================
 =
-= PA_PointOnDivlineSide
-= Exclusive Psx Doom
+= PA_DivlineSide
 =
 =====================
 */
 //inline
-int PA_PointOnDivlineSide(fixed_t x, fixed_t y, divline_t *line)//L800246F0()
+int PA_DivlineSide(fixed_t x, fixed_t y, divline_t *line)//L800246F0()
 {
 	fixed_t dx, dy;
 
@@ -481,7 +480,7 @@ boolean PA_CrossBSPNode(int bspnum)//L80024734()
     //
     // decide which side the start point is on
     //
-    side = PA_PointOnDivlineSide(shootdiv.x, shootdiv.y, &bsp->line);
+    side = PA_DivlineSide(shootdiv.x, shootdiv.y, &bsp->line);
 
     // cross the starting side
 
@@ -489,7 +488,7 @@ boolean PA_CrossBSPNode(int bspnum)//L80024734()
         return false;
 
     // the partition plane is crossed here
-    if (side == PA_PointOnDivlineSide(shootx2, shooty2, &bsp->line))
+    if (side == PA_DivlineSide(shootx2, shooty2, &bsp->line))
         return true;    // the line doesn't touch the other side
 
     // cross the ending side
