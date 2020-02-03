@@ -5,8 +5,8 @@ PSXDOOM RE contributors (sorted alphabetically)
 
     * Various information and code for PSX DOOM based on his own extensive reverse engineering efforts, including:
     
-           * Suggestions for changing names in variables:
-           
+      * Suggestions for changing names in variables:
+      
                cheatfullbright -> viewlighting
                solidseg -> solidsubsectors
                newend-> endsubsector
@@ -14,6 +14,9 @@ PSXDOOM RE contributors (sorted alphabetically)
                xtoviewangle -> yslope
                vissprites_tmp ->visspritehead
                lastsprite_p -> next
+               
+      * Identification of differences in the DrawImage and I_DrawSprite code:
+         https://github.com/BodbDearg/PsyDoom/commit/9360bd322bc939a29903f21b19f216931b67f196#r37085143
                
 * **[James Haley (Quasar)](https://github.com/haleyjd)**
     * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
