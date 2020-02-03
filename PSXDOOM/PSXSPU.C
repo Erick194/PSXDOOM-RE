@@ -1,6 +1,6 @@
 // Reconstruido por Erick Vasquez Garcia 16/05/2019 [GEC]
 // Update_1 20/10/2019 [GEC]
-// Update_2 32/01/2020 [GEC]
+// Update_2 31/01/2020 [GEC]
 
 #include <libspu.h>
 #include "psxspu.h"
@@ -29,7 +29,7 @@ extern int psxspu_cd_changeval;
 
 extern SpuReverbAttr rev_attr;//8007EEA4
 
-unsigned long SpuGetReverbOffsetAddr[10] = // equivale a la función SpuGetReverbOffsetAddr()
+unsigned long SpuGetReverbOffsetAddr[10] = // equivale a la funciÃ³n SpuGetReverbOffsetAddr()
 {
     520192, 514368, 516288, 505792, 495648,
     479776, 461120, 425920, 425920, 508928
