@@ -4,14 +4,15 @@ PSXDOOM RE contributors (sorted alphabetically)
 * **[Darragh Coy (intacowetrust)](https://github.com/BodbDearg)**
 
     * Various information and code for PSX DOOM based on his own extensive reverse engineering efforts, including:
-        * Suggestions for changing names in variables:
-            cheatfullbright -> viewlighting
-            solidseg -> solidsubsectors
-            newend-> endsubsector
-            numsegs-> numdrawsubsectors
-            xtoviewangle -> yslope
-            vissprites_tmp ->visspritehead
-            lastsprite_p -> next
+           * Suggestions for changing names in variables:
+           
+               cheatfullbright -> viewlighting
+               solidseg -> solidsubsectors
+               newend-> endsubsector
+               numsegs-> numdrawsubsectors
+               xtoviewangle -> yslope
+               vissprites_tmp ->visspritehead
+               lastsprite_p -> next
 
 * **[Samuel Villarreal (svkaiser)](https://github.com/svkaiser)**
 
