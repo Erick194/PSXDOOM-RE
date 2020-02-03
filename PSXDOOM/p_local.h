@@ -293,7 +293,7 @@ boolean	PA_ShootLine(line_t *li, fixed_t interceptfrac);
 boolean PA_ShootThing(mobj_t *th, fixed_t interceptfrac);
 fixed_t PA_SightCrossLine(line_t *line);
 boolean PA_CrossSubsector(subsector_t *sub);
-int PA_PointOnDivlineSide(fixed_t x, fixed_t y, divline_t *line);
+int PA_DivlineSide(fixed_t x, fixed_t y, divline_t *line);
 boolean PA_CrossBSPNode(int bspnum);
 
 /*
