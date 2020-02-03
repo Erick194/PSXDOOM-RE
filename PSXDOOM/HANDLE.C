@@ -1,3 +1,4 @@
+/* This file is for trial only, it does not really belong to PSXDOOM */
 
 #include <kernel.h>
 #include <libspu.h>
