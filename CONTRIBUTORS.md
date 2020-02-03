@@ -14,6 +14,9 @@ PSXDOOM RE contributors (sorted alphabetically)
                xtoviewangle -> yslope
                vissprites_tmp ->visspritehead
                lastsprite_p -> next
+               
+* **[James Haley (Quasar)](https://github.com/haleyjd)**
+    * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
 
 * **[Samuel Villarreal (svkaiser)](https://github.com/svkaiser)**
 
