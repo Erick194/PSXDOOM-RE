@@ -205,13 +205,10 @@ void DrawStaticImage(psxobj_t *psxobj, int xpos, int ypos, int pal)//L80032B78()
 
 void DrawImage(int vtpage, int pal, int xpos, int ypos,  char vramx, char vramy, int width, int height)//L80032BF8()
 {
-	RECT	area;
 	DR_MODE *drawmode = (DR_MODE*) getScratchAddr(128);//1F800200
 	SPRT *pic = (SPRT*) getScratchAddr(128);//1F800200
 
-
-	setRECT(&area, vramx, vramy, 0, 0);
-	SetDrawMode(drawmode, 0, 0, vtpage, &area);
+	SetDrawMode(drawmode, 0, 0, vtpage, NULL);
 	W_AddPrim(drawmode);// add to order table
 
 	setSprt(pic);
