@@ -76,43 +76,42 @@ int main()
 
 void PSX_INIT(void)//L80032804()
 {
-    int evn;
-	ResetCallback();
-	PadInit(0);
-	ResetGraph(0);
-	SetGraphDebug(0);
+    ResetCallback();
+    PadInit(0);
+    ResetGraph(0);
+    SetGraphDebug(0);
 
-	InitGeom();
-	SetGeomScreen(128);
-	SetGeomOffset(128, 100);
+    InitGeom();
+    SetGeomScreen(128);
+    SetGeomOffset(128, 100);
 
-	SetDefDrawEnv(&draw[0], 0, 0, 256, 240);
-	draw[0].isbg = 1;
-	draw[0].dtd = 0;
-	SetDefDrawEnv(&draw[1], 256, 0, 256, 240);
-	draw[1].isbg = 1;
-	draw[1].dtd = 0;
-	SetDefDispEnv(&disp[0], 256, 0, 256, 240);
-	SetDefDispEnv(&disp[1], 0, 0, 256, 240);
+    SetDefDrawEnv(&draw[0], 0, 0, 256, 240);
+    draw[0].isbg = 1;
+    draw[0].dtd = 0;
+    SetDefDrawEnv(&draw[1], 256, 0, 256, 240);
+    draw[1].isbg = 1;
+    draw[1].dtd = 0;
+    SetDefDispEnv(&disp[0], 256, 0, 256, 240);
+    SetDefDispEnv(&disp[1], 0, 0, 256, 240);
 
     drawside = 0;
 
-	EnterCriticalSection();
+    EnterCriticalSection();
     //__asm__("nop");
-	ExitCriticalSection();
+    ExitCriticalSection();
 
-	/* Initialize link cable communications */
+    /* Initialize link cable communications */
     {
         /* attacth the SIO driver to the kernel */
         AddCOMB();
 
         /* open an event to detect the end of read operation */
         ev_r = OpenEvent(HwSIO, EvSpIOER, EvMdNOINTR, NULL);
-        evn = EnableEvent(ev_r);
+        EnableEvent(ev_r);
 
         /* open an event to detect the end of write operation */
         ev_w = OpenEvent(HwSIO, EvSpIOEW, EvMdNOINTR, NULL);
-        evn = EnableEvent(ev_w);
+        EnableEvent(ev_w);
 
         /* open stream for writing */
         fw = open("sio:", O_WRONLY);
@@ -120,15 +119,14 @@ void PSX_INIT(void)//L80032804()
         /* open stream for reading */
         fr = open("sio:", O_RDONLY|O_NOWAIT);
 
-        //CombSetBPS(38400); // Set communication rate
         /* set comminucation rate */
-        _comb_control(1,3,0x9600);
+        CombSetBPS(38400);
     }
 
-	DrawRender();
-	DrawRender();
+    DrawRender();
+    DrawRender();
 
-	SetDispMask(1);
+    SetDispMask(1);
 }
 
 #include <stdarg.h> //va_list|va_start|va_end
