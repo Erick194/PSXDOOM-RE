@@ -904,8 +904,6 @@ int I_ReadControls (void);
 void I_NetSetup (void);
 unsigned I_NetTransfer (unsigned buttons);
 
-
-
 boolean	I_RefreshCompleted (void);
 boolean	I_RefreshLatched (void);
 int	I_GetTime (void);
@@ -914,22 +912,13 @@ void I_Update (void);
 
 void I_Error (char *error, ...);
 
-//void I_DrawColumn (int dc_x, int dc_yl, int dc_yh, int light, fixed_t dc_iscale, fixed_t dc_texturemid, inpixel_t *dc_source);
-
-//void I_DrawSpan (int ds_y, int ds_x1, int ds_x2, int light, fixed_t ds_xfrac, fixed_t ds_yfrac, fixed_t ds_xstep, fixed_t ds_ystep, inpixel_t *ds_source) ;
-
-void I_Print8 (int x, int y, char *string);
-
 /*---- */
 /*GAME */
 /*---- */
 
 void G_DeathMatchSpawnPlayer (int playernum);
 void G_InitNew (skill_t skill, int map, gametype_t gametype);
-void G_ExitLevel (void);
-void G_SecretExitLevel (void);
-void G_WorldDone (void);
-
+void G_CompleteLevel (void);
 void G_RecordDemo (void);
 int G_PlayDemoPtr (void);//(int *demo);
 

@@ -354,7 +354,7 @@ boolean P_UseSpecialLine ( mobj_t *thing, line_t *line)//L8002810C()
 				P_ChangeSwitchTexture(line, 0);
 			break;
 		case 11:		/* Exit level */
-            P_ExitLevel();//G_ExitLevel();
+            P_ExitLevel();
             P_ChangeSwitchTexture(line, 0);
 			break;
 		case 14:		/* Raise Floor 32 and change texture */
@@ -398,7 +398,7 @@ boolean P_UseSpecialLine ( mobj_t *thing, line_t *line)//L8002810C()
 				P_ChangeSwitchTexture(line, 0);
 			break;
 		case 51:		/* Secret EXIT */
-			P_SecretExitLevel(line->tag);//G_SecretExitLevel();
+			P_SecretExitLevel(line->tag);
 			P_ChangeSwitchTexture(line, 0);
 			break;
 		case 55:		/* Raise Floor Crush */

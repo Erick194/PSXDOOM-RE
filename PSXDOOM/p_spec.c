@@ -466,7 +466,7 @@ void P_CrossSpecialLine (line_t *line, mobj_t *thing)//L8002672C()
 			line->special = 0;
 			break;
 		case 52:		/* EXIT! */
-			P_ExitLevel();//G_ExitLevel();
+			P_ExitLevel();
 			line->special = 0;
 			break;
 		case 53:		/* Perpetual Platform Raise */
@@ -522,7 +522,7 @@ void P_CrossSpecialLine (line_t *line, mobj_t *thing)//L8002672C()
 			line->special = 0;
 			break;
 		case 124:		/* Secret EXIT */
-			P_SecretExitLevel(line->tag);//G_SecretExitLevel();
+			P_SecretExitLevel(line->tag);
 			break;
 		case 125:		/* TELEPORT MonsterONLY */
 			if (!thing->player)
@@ -987,7 +987,7 @@ void T_CountdownTimer(delay_t *timer)//L800276B0()
 void P_ExitLevel(void)//L80027700()
 {
 	nextmap = gamemap + 1;
-	P_SpawnDelayTimer(4, G_ExitLevel);
+	P_SpawnDelayTimer(4, G_CompleteLevel);
 }
 
 /*
@@ -1002,7 +1002,7 @@ void P_ExitLevel(void)//L80027700()
 void P_SecretExitLevel(int map)//L80027778()
 {
 	nextmap = map;
-	P_SpawnDelayTimer(4, G_ExitLevel);
+	P_SpawnDelayTimer(4, G_CompleteLevel);
 }
 
 /*
