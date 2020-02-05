@@ -331,22 +331,15 @@ spawnfog:
 /*
 ====================
 =
-= G_ExitLevel
+= G_CompleteLevel
 =
 ====================
 */
 
-void G_ExitLevel (void)//80013358
+void G_CompleteLevel (void)//80013358
 {
 	gameaction = ga_completed;
 }
-
-#if 0
-void G_SecretExitLevel (void)
-{
-	gameaction = ga_secretexit;
-}
-#endif
 
 /*============================================================================  */
 
