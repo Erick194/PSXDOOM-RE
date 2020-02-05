@@ -256,7 +256,7 @@ void P_CheckCheats (void)//L80028C74()
 
 	if (p->cheats & CF_WARPLEVEL)
 	{
-		m_vframe1[0] - vblsinframe[0];
+		m_vframe1[0] -= vblsinframe[0];
 		if (m_vframe1[0] <= 0)
 		{
 			if (buttons & PAD_LEFT)
