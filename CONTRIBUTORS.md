@@ -17,6 +17,9 @@ PSXDOOM RE contributors (sorted alphabetically)
                
       * Identification of differences in the DrawImage and I_DrawSprite code:
          https://github.com/BodbDearg/PsyDoom/commit/9360bd322bc939a29903f21b19f216931b67f196#r37085143
+         
+      * Bug identification, on line 259 in p_tick.c:
+         https://github.com/BodbDearg/PsyDoom/commit/50862aab3a3511dbc33269ee1249429314a71c18#commitcomment-37125911
                
 * **[James Haley (Quasar)](https://github.com/haleyjd)**
     * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
