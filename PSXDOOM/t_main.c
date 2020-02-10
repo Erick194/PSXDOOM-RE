@@ -142,6 +142,12 @@ int T_Ticker(void)//L8003509C()
 =======================
 */
 
+#if FIX_TITLE_FYRE_WITH == 1
+#define SKY_W 64
+#else
+#define SKY_W 63
+#endif // FIX_TITLE_FYRE_WITH
+
 void T_Draw(void)//L80035214()
 {
 	POLY_FT4 poly1;
@@ -192,16 +198,16 @@ void T_Draw(void)//L80035214()
 	//setUV4(p,_u0,_v0,_u1,_v1,_u2,_v2,_u3,_v3)
 	setUV4(&poly1,
 		skytexturep->vramx     , skytexturep->vramy,
-		skytexturep->vramx + 63, skytexturep->vramy,
+		skytexturep->vramx + SKY_W, skytexturep->vramy,
 		skytexturep->vramx     , skytexturep->vramy + 127,
-		skytexturep->vramx + 63, skytexturep->vramy + 127);
+		skytexturep->vramx + SKY_W, skytexturep->vramy + 127);
 
 	//setXY4(p,_x0,_y0,_x1,_y1,_x2,_y2,_x3,_y3)
 	setXY4(&poly1,
 		0, 116,
-		63, 116,
+		SKY_W, 116,
 		0, 243,
-		63, 243);
+		SKY_W, 243);
 
 	poly1.tpage = skytexturep->vtpage;
 	poly1.clut = skypalette;
@@ -209,10 +215,10 @@ void T_Draw(void)//L80035214()
 	for (i = 0; i < 4; i++)
 	{
 		W_AddPrim(&poly1);// add to order table
-		poly1.x0 += 63;
-		poly1.x1 += 63;
-		poly1.x2 += 63;
-		poly1.x3 += 63;
+		poly1.x0 += SKY_W;
+		poly1.x1 += SKY_W;
+		poly1.x2 += SKY_W;
+		poly1.x3 += SKY_W;
 	}
 
 	UpdateDrawOTag();

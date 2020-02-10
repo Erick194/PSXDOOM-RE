@@ -3,13 +3,14 @@
 
 /* Fixes and Version Update Here*/
 //NEWS
-#define SHOWFPS  1
+#define SHOWFPS 1
 
 //FIXES
-#define FIX_LINEDEFS_DELETION  1    //Fixes for the 'linedef deletion' bug. From PsyDoom
+#define FIX_LINEDEFS_DELETION   1   //Fixes for the 'linedef deletion' bug. From PsyDoom
+#define FIX_TITLE_FYRE_WITH     1   //Fix a 4 pixel gap at the right side of the screen with the fire. From PsyDoom
 
 //UPDATES
-#define GH_UPDATES 1    //Psx Doom Greatest Hits Updates
+#define GH_UPDATES  1    //Psx Doom Greatest Hits Updates
 
 /* JAGUAR should be defined on the compiler command line for console builds */
 /* if MARS isn't defined, assume jaguar version */
