@@ -175,7 +175,6 @@ void PW_Drawer(void) //L80036F34()
 	byte	c;
 	int		texid, cnt;
 	int		xpos, ypos, pos1, pos2;
-	RECT	area;
 
 	DR_MODE *drawmode = (DR_MODE*) getScratchAddr(128);//1F800200
 	SPRT *textsprite = (SPRT*) getScratchAddr(128);//1F800200
@@ -191,8 +190,7 @@ void PW_Drawer(void) //L80036F34()
 		}
 	}
 
-	setRECT(&area, 0, 0, 0, 0);
-	SetDrawMode(drawmode, 0, 0, statuspic.vtpage, &area);
+	SetDrawMode(drawmode, 0, 0, statuspic.vtpage, NULL);
 	W_AddPrim(drawmode);// add to order table
 
 	setSprt(textsprite);

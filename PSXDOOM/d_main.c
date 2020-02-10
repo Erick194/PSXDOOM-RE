@@ -144,14 +144,12 @@ void D_DebugSetPrintPos(int x, int y)//L800124E8()
 
 void D_DebugPrint(const char *text, ...)//L800124F8()
 {
-	RECT area;
 	char buffer[256];
 	va_list args;
 	DR_MODE *drawmode = (DR_MODE*) getScratchAddr(128);//1F800200
 	SPRT    *debugsprite = (SPRT*) getScratchAddr(128);//1F800200
 
-	setRECT(&area, 0, 0, 0, 0);
-	SetDrawMode(drawmode, 0, 0, statuspic.vtpage, &area);
+	SetDrawMode(drawmode, 0, 0, statuspic.vtpage, NULL);
 	W_AddPrim(drawmode);// add to order table
 
 	SetSprt(debugsprite);
