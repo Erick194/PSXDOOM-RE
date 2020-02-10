@@ -20,6 +20,13 @@ PSXDOOM RE contributors (sorted alphabetically)
          
       * Bug identification, on line 259 in p_tick.c:
          https://github.com/BodbDearg/PsyDoom/commit/50862aab3a3511dbc33269ee1249429314a71c18#commitcomment-37125911
+         
+      * Identification of non-existent lines in the original code
+         https://github.com/BodbDearg/PsyDoom/commit/8b7afc9d06f76c9f7fd00fc2e840107dd79a01de#r37163087
+         https://github.com/BodbDearg/PsyDoom/commit/775e02de38cd3bf50e3dfa7173529c6ff783d641#r37185771
+         
+      * Update Identification from Psx Doom Greatest Hits
+         https://github.com/BodbDearg/PsyDoom/commit/775e02de38cd3bf50e3dfa7173529c6ff783d641#r37185747
                
 * **[James Haley (Quasar)](https://github.com/haleyjd)**
     * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
