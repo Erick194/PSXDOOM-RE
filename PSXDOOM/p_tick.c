@@ -209,10 +209,11 @@ void P_CheckCheats (void)//L80028C74()
 			if (gamepaused)
 			{
 				psxcd_pause();
-				{   //Only PSX (FINAL DOOM / DOOM Greatest Hits)
-                    wess_seq_stop(sfx_sawful);
-                    wess_seq_stop(sfx_sawhit);
-				}
+				#if GH_UPDATES == 1
+				//Only PSX (FINAL DOOM / DOOM Greatest Hits)
+                wess_seq_stop(sfx_sawful);
+                wess_seq_stop(sfx_sawhit);
+				#endif // GH_UPDATES
 				S_Pause();
 				codepos = 0;
 				cht_ticon = ticon;

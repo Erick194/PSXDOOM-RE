@@ -1,9 +1,15 @@
 /* DoomDef.h */
 
 
-/* Repairs and Version Update Here*/
-#define FIX_LINEDEFS_DELETION  1
+/* Fixes and Version Update Here*/
+//NEWS
 #define SHOWFPS  1
+
+//FIXES
+#define FIX_LINEDEFS_DELETION  1    //Fixes for the 'linedef deletion' bug. From PsyDoom
+
+//UPDATES
+#define GH_UPDATES 1    //Psx Doom Greatest Hits Updates
 
 /* JAGUAR should be defined on the compiler command line for console builds */
 /* if MARS isn't defined, assume jaguar version */

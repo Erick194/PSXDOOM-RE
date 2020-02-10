@@ -369,7 +369,7 @@ void ST_Ticker (void)//L80038404()
 */
 extern char mapnames[][32];
 
-#if SHOWFPS
+#if SHOWFPS == 1
 extern int fps;
 #endif // _SHOWFPS
 
@@ -400,7 +400,12 @@ void ST_Drawer (void)//L80038888();
 	/* */
 	if (stbar.messagedelay > 0)
 	{
+	    //In Psx Doom Greatest Hits and Final Doom, the value of position X was changed to 7
+	    #if GH_UPDATES == 1
+		ST_DrawMessage(7, 193, stbar.message);
+		#else
 		ST_DrawMessage(2, 193, stbar.message);
+		#endif // GH_UPDATES
 	}
 	else if (player->automapflags & AF_ACTIVE)
 	{
