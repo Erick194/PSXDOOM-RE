@@ -21,7 +21,9 @@ char skillnames[][16] = //80073B3C
 	"Not Too Rough",
 	"Hurt Me Plenty",
 	"Ultra Violence",
-	"Nightmare"//[GEC] Master Edition
+	#if ENABLE_NIGHTMARE == 1
+	"Nightmare"     //[GEC] Master Edition
+	#endif // ENABLE_NIGHTMARE
 };
 
 typedef enum
@@ -254,8 +256,11 @@ int M_Ticker(void)//L80035CC4()
                 case	difficulty:
                     if (buttons & PAD_RIGHT)
 					{
-						//if (startskill < sk_nightmare)
-						if (startskill < sk_hard)
+					    #if ENABLE_NIGHTMARE == 1
+					    if (startskill < sk_nightmare)
+					    #else
+					    if (startskill < sk_hard)
+					    #endif // ENABLE_NIGHTMARE
                         {
                             startskill++;
                             S_StartSound(NULL, sfx_swtchx);

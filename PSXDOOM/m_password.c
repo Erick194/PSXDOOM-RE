@@ -13,8 +13,21 @@ void Encode_Password(byte *buff)//L80037BBC()
 	int maxclip, maxshell, maxcell, maxmisl;
 	int val, newval;
 
+	#if ENABLE_NIGHTMARE == 1
+	int skillnightmare;
+	#endif // ENABLE_NIGHTMARE
+
 	player = &players[consoleplayer];
 	D_memset(tmpbuff, 0, 8);
+
+	#if ENABLE_NIGHTMARE == 1
+	//Check the nightmare difficulty
+	skillnightmare = 0;
+	if(gameskill == sk_nightmare)
+    {
+        skillnightmare = sk_nightmare;
+    }
+    #endif // ENABLE_NIGHTMARE
 
 	tmpbuff[0] = ((byte)nextmap & 63) << 2;//map
 	tmpbuff[0] |= (byte)gameskill & 3;//skill
@@ -76,6 +89,14 @@ void Encode_Password(byte *buff)//L80037BBC()
 
 	// ArmorType
 	tmpbuff[5] = (byte)player->armortype << 3;
+
+	#if ENABLE_NIGHTMARE == 1
+	//I used the ArmorType space to add the 0x80 flag to identify that the difficulty is nightmare
+	if(skillnightmare != 0)
+    {
+        tmpbuff[5] |= 0x80;
+    }
+    #endif // ENABLE_NIGHTMARE
 
 	//Encode Encrypt System
 	for (i = 0; i < 45;)
@@ -160,210 +181,96 @@ int Decode_Password(byte *inbuff, int *levelnum, int *skill, player_t *player)//
 		{
 			*skill = decbuff[0] & 3;
 
-			// ArmorType
-			if ((decbuff[5] >> 3) < 3)
-			{
-				// Health
-				if ((decbuff[4] >> 4) != 0)
-				{
-					if (player != 0)
-					{
-						// Weapons
-						for (i = 0; i < 7; i++)
-						{
-							if ((decbuff[1] >> i) & 1)
-							{
-								player->weaponowned[wp_shotgun + i] = 1;
-							}
-						}
+			#if ENABLE_NIGHTMARE == 1
+			//Check that the flag is 0x80, add the nightmare difficulty and remove the flag 0x80
+			if (decbuff[5] & 0x80)
+            {
+                decbuff[5] &= ~0x80;
+                *skill = sk_nightmare;
+            }
+			#endif // ENABLE_NIGHTMARE
 
-						// Backpack
-						if (decbuff[1] & 0x80)
-						{
-							if (!player->backpack)
-							{
-								player->backpack = 1;
-
-								for (i = 0; i < 4; i++)
-									player->maxammo[i] <<= 1;
-							}
-						}
-
-						// Clip
-						val = decbuff[2] >> 4;
-						val *= player->maxammo[am_clip];
-						if (val < 0) { val += 7; }
-						player->ammo[am_clip] = val >> 3;
-
-						// Shell
-						val = decbuff[2] & 0xf;
-						val *= player->maxammo[am_shell];
-						if (val < 0) { val += 7; }
-						player->ammo[am_shell] = val >> 3;
-
-						// Cell
-						val = decbuff[3] >> 4;
-						val *= player->maxammo[am_cell];
-						if (val < 0) { val += 7; }
-						player->ammo[am_cell] = val >> 3;
-
-						// Shell
-						val = decbuff[3] & 0xf;
-						val *= player->maxammo[am_misl];
-						if (val < 0) { val += 7; }
-						player->ammo[am_misl] = val >> 3;
-
-						// Health
-						player->health = (decbuff[4] >> 4) * 25;
-
-						// Armor
-						player->armorpoints = (decbuff[4] & 15) * 25;
-
-						// ArmorType
-						player->armortype = decbuff[5] >> 3;
-
-						// Apply Health on mobj_t
-						player->mo->health = player->health;
-					}
-
-					return 1;
-				}
-			}
-		}
-	}
-
-	return 0;
-}
-
-/*
-int Decode_Password_v2(byte *inbuff, int *levelnum, int *skill, player_t *player)//L80037FB0()
-{
-	int val, newval, i, j, shift, code, pos;
-	byte decbuff[8];
-	byte buff[10];
-
-	D_memcpy(buff, inbuff, 10);
-
-	val = 0;
-
-	for (i = 0; i < 9; i++)
-		buff[i] ^= buff[9];
-
-	for (i = 0; i < 9; i++)
-		val ^= buff[i];
-
-	if (val == buff[9])
-	{
-		//Decode Encrypt System
-		for (i = 0; i < 48;)
-		{
-			newval = 0;
-			shift = 0x80;
-
-			for (j = 7; j >= 0; j--)
-			{
-				pos = (i / 5);
-				code = buff[pos] & (16 >> (i - (pos * 5)));
-
-				if (code != 0)
-					newval |= shift;
-
-				shift >>= 1;
-				i++;
-			}
-
-			pos = (i - 1);
-			if (pos < 0) { pos = i + 6; }
-			pos >>= 3;
-
-			decbuff[pos] = newval;
-		}
-
-		*levelnum = decbuff[0] >> 2;
-
-		if (*levelnum != 0 && (*levelnum < 60))
-		{
-			*skill = decbuff[0] & 3;
-
+			#if GH_UPDATES == 1
 			if (((decbuff[2] & 15) < 9) &&	// Shell
 				((decbuff[2] >> 4) < 9) &&	// Clip
 				((decbuff[3] & 15) < 9) &&	// Missile
 				((decbuff[3] >> 4) < 9) &&	// Cell
 				((decbuff[4] & 15) < 9) &&	// Armor
 				((decbuff[4] >> 4) < 9))	// Health
+            #endif // GH_UPDATES
 			{
-				// ArmorType
-				if ((decbuff[5] >> 3) < 3)
-				{
-					// Health
-					if ((decbuff[4] >> 4) != 0)
-					{
-						if (player != 0)
-						{
-							// Weapons
-							for (i = 0; i < 7; i++)
-							{
-								if ((decbuff[1] >> i) & 1)
-								{
-									player->weaponowned[wp_shotgun + i] = 1;
-								}
-							}
+                // ArmorType
+                if ((decbuff[5] >> 3) < 3)
+                {
+                    // Health
+                    if ((decbuff[4] >> 4) != 0)
+                    {
+                        if (player != 0)
+                        {
+                            // Weapons
+                            for (i = 0; i < 7; i++)
+                            {
+                                if ((decbuff[1] >> i) & 1)
+                                {
+                                    player->weaponowned[wp_shotgun + i] = 1;
+                                }
+                            }
 
-							// Backpack
-							if (decbuff[1] & 0x80)
-							{
-								if (!player->backpack)
-								{
-									player->backpack = 1;
+                            // Backpack
+                            if (decbuff[1] & 0x80)
+                            {
+                                if (!player->backpack)
+                                {
+                                    player->backpack = 1;
 
-									for (i = 0; i < 4; i++)
-										player->maxammo[i] <<= 1;
-								}
-							}
+                                    for (i = 0; i < 4; i++)
+                                        player->maxammo[i] <<= 1;
+                                }
+                            }
 
-							// Clip
-							val = decbuff[2] >> 4;
-							val *= player->maxammo[am_clip];
-							if (val < 0) { val += 7; }
-							player->ammo[am_clip] = val >> 3;
+                            // Clip
+                            val = decbuff[2] >> 4;
+                            val *= player->maxammo[am_clip];
+                            if (val < 0) { val += 7; }
+                            player->ammo[am_clip] = val >> 3;
 
-							// Shell
-							val = decbuff[2] & 0xf;
-							val *= player->maxammo[am_shell];
-							if (val < 0) { val += 7; }
-							player->ammo[am_shell] = val >> 3;
+                            // Shell
+                            val = decbuff[2] & 0xf;
+                            val *= player->maxammo[am_shell];
+                            if (val < 0) { val += 7; }
+                            player->ammo[am_shell] = val >> 3;
 
-							// Cell
-							val = decbuff[3] >> 4;
-							val *= player->maxammo[am_cell];
-							if (val < 0) { val += 7; }
-							player->ammo[am_cell] = val >> 3;
+                            // Cell
+                            val = decbuff[3] >> 4;
+                            val *= player->maxammo[am_cell];
+                            if (val < 0) { val += 7; }
+                            player->ammo[am_cell] = val >> 3;
 
-							// Missile
-							val = decbuff[3] & 0xf;
-							val *= player->maxammo[am_misl];
-							if (val < 0) { val += 7; }
-							player->ammo[am_misl] = val >> 3;
+                            // Shell
+                            val = decbuff[3] & 0xf;
+                            val *= player->maxammo[am_misl];
+                            if (val < 0) { val += 7; }
+                            player->ammo[am_misl] = val >> 3;
 
-							// Health
-							player->health = (decbuff[4] >> 4) * 25;
+                            // Health
+                            player->health = (decbuff[4] >> 4) * 25;
 
-							// Armor
-							player->armorpoints = (decbuff[4] & 15) * 25;
+                            // Armor
+                            player->armorpoints = (decbuff[4] & 15) * 25;
 
-							// ArmorType
-							player->armortype = decbuff[5] >> 3;
+                            // ArmorType
+                            player->armortype = decbuff[5] >> 3;
 
-							// Apply Health on mobj_t
-							player->mo->health = player->health;
-						}
+                            // Apply Health on mobj_t
+                            player->mo->health = player->health;
+                        }
 
-						return 1;
-					}
-				}
+                        return 1;
+                    }
+                }
 			}
 		}
 	}
 
 	return 0;
-}*/
+}
