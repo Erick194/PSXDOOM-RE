@@ -122,7 +122,7 @@ void M_Start(void)//L80035A9C()
 	if (movecount < startmap)
 		startmap = 1;
 
-    psxcd_play_at_andloop(CD_TRACK[2],CDVolume,0,0,CD_TRACK[2],CDVolume,0,0);
+    psxcd_play_at_andloop(CD_TRACK[cdmusic_main_menu],CDVolume,0,0,CD_TRACK[cdmusic_main_menu],CDVolume,0,0);
 	do {} while (psxcd_elapsed_sectors() == 0);
 
 	//Desactiva la vision en la pantalla

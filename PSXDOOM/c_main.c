@@ -28,7 +28,7 @@ void C_Start(void)//L800369D8()
 	c_yscroll = 240;//80078080
 	c_next = 0;//80077FCC
 
-	psxcd_play_at_andloop(CD_TRACK[3],CDVolume,0,0,CD_TRACK[3],CDVolume,0,0);
+	psxcd_play_at_andloop(CD_TRACK[cdmusic_credits_demo],CDVolume,0,0,CD_TRACK[cdmusic_credits_demo],CDVolume,0,0);
 	do {} while (psxcd_elapsed_sectors() == 0);
 }
 

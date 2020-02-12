@@ -143,7 +143,7 @@ void IN_Start(void)//L8003C4D4()
 		Encode_Password(Passwordbuff);
 	}
 
-	psxcd_play_at_andloop(CD_TRACK[4],CDVolume,0,0,CD_TRACK[4],CDVolume,0,0);
+	psxcd_play_at_andloop(CD_TRACK[cdmusic_intermission],CDVolume,0,0,CD_TRACK[cdmusic_intermission],CDVolume,0,0);
 	do {} while (psxcd_elapsed_sectors() == 0);
 }
 

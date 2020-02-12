@@ -537,7 +537,7 @@ void P_CrossSpecialLine (line_t *line, mobj_t *thing)//L8002672C()
 			break;
 		case 142:		/* Play Track Club Doom PSX DOOM EXCLUSIVE */
             S_StopMusic();
-            psxcd_play_at_andloop(CD_TRACK[5],CDVolume,0,0,CD_TRACK[5],CDVolume,0,0);
+            psxcd_play_at_andloop(CD_TRACK[cdmusic_club_doom],CDVolume,0,0,CD_TRACK[cdmusic_club_doom],CDVolume,0,0);
             line->special = 0;
 			break;
 	/*==================================================== */

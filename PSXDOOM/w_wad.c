@@ -15,8 +15,6 @@ typedef struct
 	int			infotableofs;
 } wadinfo_t;
 
-
-//byte		*wadfileptr;
 int			wadfilenum;	//80078078
 
 /*============= */

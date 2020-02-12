@@ -1,33 +1,6 @@
 #ifndef __SOUNDSH__
 #define __SOUNDSH__
 
-//#include "soundst.h"
-
-/*
- *  Identifiers for all music in game.
- */
-#if 0
-typedef enum
-{
-  mus_None,
-  mus_e1m1,
-  mus_e1m2,
-  mus_e1m4,
-  mus_e1m6,
-  mus_e2m1,
-  mus_e2m2,
-  mus_e2m3,
-  mus_e2m6,
-  mus_e2m8,
-  mus_e3m2,
-  mus_intro,
-  NUMMUSIC
-} musicenum_t;
-#endif
-
-
-extern int CD_TRACK[8];//80073c78
-
 /*
  *  Identifiers for all sfx in game.
  */
@@ -126,11 +99,6 @@ typedef enum
 	sfx_getpow,
 	NUMSFX
 } sfxenum_t;
-
-#if 0
-extern musicinfo_t S_music[];
-extern sfxinfo_t   S_sfx[];
-#endif // 0
 
 #endif
 

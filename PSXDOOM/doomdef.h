@@ -1,6 +1,5 @@
 /* DoomDef.h */
 
-
 /* Fixes and Version Update Here*/
 //NEWS
 #define SHOWFPS  1
@@ -12,40 +11,7 @@
 //UPDATES
 #define GH_UPDATES 1    //Psx Doom Greatest Hits Updates
 
-/* JAGUAR should be defined on the compiler command line for console builds */
-/* if MARS isn't defined, assume jaguar version */
-
-/*define	MARS */
-
-
-
-/* if rangecheck is undefined, most parameter validation debugging code */
-/* will not be compiled */
-//#define	RANGECHECK
-
-/* if SIMULATOR is defined, compile in extra code for things like console */
-/* debugging aids */
-//#ifndef JAGUAR
-//#ifndef MARS
-//#define SIMULATOR
-//#endif
-//#endif
-
-//typedef unsigned short pixel_t;
-
-/*#ifdef MARS
-typedef unsigned char inpixel_t;
-#else
-typedef unsigned short inpixel_t;
-#endif*/
-
-/* the structure sizes are frozen at ints for jaguar asm code, but shrunk */
-/* down for mars memory cramming */
-//#ifdef MARS
-//#define	VINT	short
-//#else
 #define	VINT	int
-//#endif
 
 /* SONY LIBRARIES */
 #include <sys/types.h>
@@ -60,13 +26,13 @@ typedef unsigned short inpixel_t;
 #include <libapi.h>
 #include <libcomb.h>
 #include <libetc.h>
-#include <sys/file.h> //O_RDONLY|O_WRONLY|O_NOWAIT
+#include <sys/file.h> /* O_RDONLY|O_WRONLY|O_NOWAIT */
 
-//PSX CD INCLUDES
+/* PSX CD INCLUDES */
 #include "psxcd.h"
 #include "psxcdabs.h"
 
-//WESS API INCLUDES
+/* WESS API INCLUDES */
 #include "wessapi.h"
 #include "wessarc.h"
 #include "psxcd.h"
@@ -75,7 +41,7 @@ typedef unsigned short inpixel_t;
 #include "seqload.h"
 #include "lcdload.h"
 
-//NEW GEC
+/* NEW GEC */
 #define setClutNum(p,num) \
 	((p)->clut = num)
 
@@ -122,6 +88,7 @@ struct texture_t {
   7 28 4 uint32_t                    uploadFrameNum;         // What frame the texture was added to the texture cache, used to detect texture cache overflows
 };
 */
+
 //
 // Object Data Psx Doom
 //
@@ -203,7 +170,6 @@ typedef enum
 	sk_hard,
 	sk_nightmare
 } skill_t;
-
 
 typedef enum
 {
@@ -294,47 +260,6 @@ typedef struct mobj_s
 	short			spawnx, spawny, spawntype,spawnangle;	/* for deathmatch respawning */
 
     struct mobj_s*	tracer;         /* Thing being chased/attacked for tracers. */
-
-//actor->x				*r16
-//actor->y				*(r16 + 4)
-//actor->z				*(r16 + 8)
-//actor->subsector		*(r16 + 12)
-
-//actor->prev			*(r4 + 16)
-//actor->next			*(r4 + 20)
-//actor->latecall		*(r16 + 24)//mobj->mobjfunc
-//actor->snext			*(r4 + 28)
-//actor->sprev			*(r4 + 32)
-//actor->angle			*(r17 + 36)
-//actor->sprite			*(r16 + 40)
-//actor->frame			*(r16 + 44)
-//actor->bnext			*(r4 + 48)
-//actor->bprev			*(r4 + 52)
-//actor->floorz			*(r16 + 56)
-//actor->ceilingz		*(r16 + 60)
-//actor->radius			*(r18 + 64)
-//actor->height			*(r18 + 68)
-//actor->momx			*(r2 + 72)
-//actor->momy			*(r2 + 76)
-//actor->momz			*(r17 + 80)
-//actor->type			*(r17 + 84)
-//actor->info			*(r4 + 88)
-//actor->tics			*(r16 + 92)
-//actor->state			*(r16 + 96)
-//actor->flags			*(r16 + 100)
-//actor->health			*(r16 + 104)
-//actor->movedir		*(r16 + 108)
-//actor->movecount		*(r16 + 112)
-//actor->target			*(r17 + 116)
-//actor->reactiontime	*(r17 + 120)
-//actor->threshold		*(r16 + 124)
-//actor->player			*(r5 + 128)
-//actor->extramobj or extradata	*(r16 + 132)	//psx new
-//actor->spawnx			*(r16 + 136)
-//actor->spawny			*(r16 + 138)
-//actor->spawntype		*(r16 + 140)
-//actor->spawnangle		*(r16 + 142)
-//actor->tracer			*(r2 + 144)
 } mobj_t;
 
 /* each sector has a degenmobj_t in it's center for sound origin purposes */
@@ -392,7 +317,7 @@ typedef struct
 
 #define	MF_SEETARGET	0x4000000	/* is target visible? */
 
-//Exclusive Psx Doom
+/* Exclusive Psx Doom Flags */
 #define	MF_BLENDMASK1	0x10000000
 #define	MF_BLENDMASK2	0x20000000
 #define	MF_BLENDMASK3	0x40000000
@@ -425,12 +350,6 @@ typedef struct
 
 typedef enum
 {
-	/*it_bluecard,
-	it_yellowcard,
-	it_redcard,
-	it_blueskull,
-	it_yellowskull,
-	it_redskull,*/
 	it_redcard,
 	it_bluecard,
 	it_yellowcard,
@@ -547,84 +466,6 @@ typedef struct player_s
 
 	int			automapx, automapy, automapscale, automapflags;
 	int			turnheld;				/* for accelerative turning */
-
-//player->mo							*r19
-//player->playerstate					*(r19 + 4)||0x800a85d0
-//player->forwardmove, sidemove;		*(r19 + 8) *(r19 + 12)
-//player->angleturn;					*(r19 + 16)
-//player->viewz;						*(r19 + 20)
-//player->viewheight					*(r19 + 24)
-//player->deltaviewheight				*(r19 + 28)
-
-//player->bob							*(r19 + 32)
-//player->bob							*(r19 + 34)>>16
-
-//player->health						*(r19 + 36)
-//player->armorpoints					*(r4 + 40)
-//player->armortype						*(r4 + 44)
-//player->powers[pw_invulnerability]	*(r4 + 48)
-//player->powers[pw_strength]			*(r4 + 52)
-//player->powers[pw_invisibility]		*(r4 + 56)
-//player->powers[pw_ironfeet]			*(r4 + 60)
-//player->powers[pw_allmap]				*(r4 + 64)
-//player->powers[pw_infrared]			*(r4 + 68)
-//player->cards[it_redcard]				*(r16 + 72)
-//player->cards[it_bluecard]			*(r16 + 76)
-//player->cards[it_yellowcard]			*(r16 + 80)
-//player->cards[it_redskull]			*(r16 + 84)
-//player->cards[it_blueskull]			*(r16 + 88)
-//player->cards[it_yellowskull]			*(r16 + 92)
-//player->backpack						*(r17 + 96)
-//player->frags							*(r17 + 100)
-//player->fragpad						*(r17 + 104)??
-//player->readyweapon					*(r16 + 108)
-//player->pendingweapon					*(r16 + 112)
-//player->weaponowned[wp_fist]			*(r16 + 116)
-//player->weaponowned[wp_pistol]		*(r16 + 120)
-//player->weaponowned[wp_shotgun]		*(r16 + 124)
-//player->weaponowned[wp_supershotgun]	*(r16 + 128)
-//player->weaponowned[wp_chaingun]		*(r16 + 132)
-//player->weaponowned[wp_missile]		*(r16 + 136)
-//player->weaponowned[wp_plasma]		*(r16 + 140)
-//player->weaponowned[wp_bfg]			*(r16 + 144)
-//player->weaponowned[wp_chainsaw]		*(r16 + 148)
-//player->ammo[0 am_clip]				*(r2 + 152)
-//player->ammo[1 am_shell]				*(r2 + 156)
-//player->ammo[2 am_cell]				*(r2 + 160)
-//player->ammo{3 am_misl]				*(r2 + 164)
-//player->maxammo[0 am_clip]			*(r2 + 168)
-//player->maxammo[1 am_shell]			*(r2 + 172)
-//player->maxammo[2 am_cell]			*(r2 + 176)
-//player->maxammo[3 am_misl]			*(r2 + 180)
-//player->attackdown					*(r2 + 184)
-//player->usedown						*(r2 + 188)
-//player->cheats						*(r18 + 192) & 2)
-//player->refire						*(r19 + 196)
-//player->killcount						*(r4 + 200)
-//player->itemcount						*(r17 + 204)
-//player->secretcount					*(r17 + 208)
-//player->message						*(r16 + 212)
-//p->damagecount						*(r19 + 216)
-//p->bonuscount							*(r19 + 220)
-//player->attacker						*(r18 + 224)
-//player->extralight					*(r19 + 228)
-//p->fixedcolormap						*(r19 + 232)
-//p->colormap;                          *(r19 + 236)??
-//player->psprites[ps_weapon].state		*(r4 + 240)//position 0
-//player->psprites[ps_weapon].tics		*(r17 + 244)
-//player->psprites[ps_weapon].sx		*(r17 + 248)
-//player->psprites[ps_weapon].sy		*(r17 + 252)
-//player->psprites[ps_flash].state		*(r4 + 256)//position 1
-//player->psprites[ps_flash].tics		*(r4 + 260)
-//player->psprites[ps_flash].sx			*(r4 + 264)
-//player->psprites[ps_flash].sy			*(r4 + 268)
-//p->didsecret;				            *(r4 + 272)??
-//player->lastsoundsector				*(r4 + 276) *(0x800a86e0 + r2)
-//player->automapx						*(r4 + 280)
-//player->automapy						*(r4 + 284)
-//player->automapscale					*(r19 + 288)
-//player->automapflags					*(r4 + 292)
-//player->turnheld;						*(r4 + 296)
 } player_t;
 
 #define CF_NOCLIP		1 // no use
@@ -688,7 +529,6 @@ extern	int			consoleplayer;		/* player taking events and displaying */
 extern	int			displayplayer;
 extern	player_t	players[MAXPLAYERS];
 
-extern	int			skytexture;
 extern	boolean     rendersky;//8007801C
 
 
@@ -710,22 +550,12 @@ extern	mapthing_t	playerstarts[MAXPLAYERS];//800a8c60
 ===============================================================================
 */
 
-
 fixed_t	FixedMul (fixed_t a, fixed_t b);
 fixed_t	FixedDiv (fixed_t a, fixed_t b);
 
-#define	ACC_FIXEDMUL	4
-#define	ACC_FIXEDDIV	8
-#define	ACC_MULSI3		12
-#define	ACC_UDIVSI3		16
-
-
-
-//#if defined(JAGUAR) || (defined(MARS)&&!defined(NeXT))
 #ifndef __BIG_ENDIAN__
 #define __BIG_ENDIAN__
 #endif
-//#endif
 
 #ifdef __BIG_ENDIAN__
 
@@ -795,7 +625,6 @@ typedef struct
 	memblock_t	blocklist;		/* start / end cap for linked list */
 } memzone_t;
 
-
 //extern int framecount;
 
 extern	memzone_t	*mainzone;
@@ -832,9 +661,6 @@ typedef struct {
     void       *cache;
 } lumpcache_t;
 
-#define	MAXLUMPS	2048
-
-//extern	byte		*wadfileptr;
 extern	int			wadfilenum;
 
 extern	lumpinfo_t	*lumpinfo;		/* points directly to rom image */
@@ -876,7 +702,6 @@ void	ReadFile(int file_num, void *destptr, unsigned int readbytes);//psxdoom
 
 #define W_POINTLUMPNUM(x) (void*)(wadfileptr+BIGLONG(lumpinfo[x].filepos));
 
-
 /*---------- */
 /*BASE LEVEL */
 /*---------- */
@@ -895,29 +720,6 @@ extern	gametype_t	starttype;
 /*--------- */
 #define	SCREENWIDTH		256
 #define	SCREENHEIGHT	240
-
-void I_Init (void);
-byte *I_WadBase (void);
-byte *I_ZoneBase (int *size);
-
-/* return a pointer to a 64k or so temp work buffer for level setup uses */
-/*(non-displayed frame buffer) */
-byte *I_TempBuffer (void);
-
-void I_SetPalette (byte *palette);
-
-int I_ReadControls (void);
-
-void I_NetSetup (void);
-unsigned I_NetTransfer (unsigned buttons);
-
-boolean	I_RefreshCompleted (void);
-boolean	I_RefreshLatched (void);
-int	I_GetTime (void);
-
-void I_Update (void);
-
-void I_Error (char *error, ...);
 
 /*---- */
 /*GAME */
@@ -1000,8 +802,6 @@ void AM_Start (void);
 /*OPTIONS */
 /*----- */
 
-//void O_Init (void);
-//void O_Control (player_t *player);
 void O_Start (void);
 void O_Stop (int exit);
 int O_Ticker (void);
@@ -1010,6 +810,7 @@ void O_Drawer (void);
 /*----- */
 /*PASSWORD */
 /*----- */
+
 void PW_Start(void);
 void PW_Stop(int exit);
 int PW_Ticker(void);
@@ -1020,6 +821,7 @@ int Decode_Password(byte *inbuff, int *levelnum, int *skill, player_t *player);
 /*----- */
 /*CONFIGURATION */
 /*----- */
+
 void CF_Start (void);
 void CF_Stop (int exit);
 int CF_Ticker (void);
@@ -1039,7 +841,6 @@ void ST_InitEveryLevel(void);
 /*------- */
 /*REFRESH */
 /*------- */
-struct seg_s;
 
 void R_RenderPlayerView (void);
 void R_Init (void);
@@ -1048,7 +849,6 @@ int	R_TextureNumForName (char *name);
 int	R_CheckTextureNumForName (char *name);
 angle_t R_PointToAngle2 (fixed_t x1, fixed_t y1, fixed_t x2, fixed_t y2);
 struct subsector_s *R_PointInSubsector (fixed_t x, fixed_t y);
-
 
 /*---- */
 /*MISC */
@@ -1064,143 +864,6 @@ void M_AddToBox (fixed_t *box, fixed_t x, fixed_t y);
 /* header generated by Dave's sound utility */
 #include "sounds.h"
 
-/*============================================================================ */
-/* */
-/* jag additions */
-/* */
-/*============================================================================ */
-
-//extern	pixel_t	*workingscreen;
-//extern	int		junk, spincount;
-
-extern	volatile int		ticcount, joybuttons;
-/*
-#define BLITWAIT while ( ! ((junk=*(int *)0xf02238) & 1) )	;
-
-#define	JP_NUM		1
-#define	JP_9		2
-#define	JP_6		4
-#define	JP_3		8
-#define	JP_0		0x10
-#define	JP_8		0x20
-#define	JP_5		0x40
-#define	JP_2		0x80
-
-#define	JP_OPTION	0x200
-#define	JP_C		0x2000
-#define	JP_STAR		0x10000
-#define	JP_7		0x20000
-#define	JP_4		0x40000
-#define	JP_1		0x80000
-#define	JP_UP		0x100000
-#define	JP_DOWN		0x200000
-#define	JP_LEFT		0x400000
-#define	JP_RIGHT	0x800000
-
-#define	JP_B		0x2000000
-#define	JP_PAUSE	0x10000000
-#define	JP_A		0x20000000
-
-
-#define	BT_RIGHT		JP_RIGHT
-#define	BT_LEFT			JP_LEFT
-#define	BT_UP			JP_UP
-#define	BT_DOWN			JP_DOWN
-#define	BT_A			JP_A
-#define	BT_B			JP_B
-#define	BT_C			JP_C
-#define	BT_OPTION		JP_OPTION
-#define	BT_PAUSE		JP_PAUSE
-#define BT_STAR			JP_STAR
-#define	BT_HASH			JP_NUM
-#define	BT_1			JP_1
-#define	BT_2			JP_2
-#define	BT_3			JP_3
-#define	BT_4			JP_4
-#define	BT_5			JP_5
-#define	BT_6			JP_6
-#define	BT_7			JP_7
-#define	BT_8			JP_8
-#define	BT_9			JP_9
-#define	BT_0			JP_0
-
-extern	unsigned	BT_ATTACK;
-extern	unsigned	BT_USE;
-extern	unsigned	BT_STRAFE;
-extern	unsigned	BT_SPEED;*/
-
-extern	int		sfxvolume, musicvolume;		/* range from 0 to 255 */
-
-#if 0
-/* */
-/* comnjag.c */
-/*  */
-extern	int		samplecount;
-
-
-void C_Init (void);
-void NumToStr (int num, char *str);
-void PrintNumber (int x, int y, int num);
-
-
-#define	BASEORGX	(7)
-/*define	BASEORGY	(24) */
-extern	unsigned BASEORGY;
-
-/*================= */
-
-
-typedef struct
-{
-	short	width;		/* in pixels */
-	short	height;
-	short	depth;		/* 1-5 */
-	short	index;		/* location in palette of color 0 */
-	short	pad1,pad2,pad3,pad4;	/* future expansion */
-	byte	data[8];		/* as much as needed */
-} jagobj_t;
-
-
-//void DoubleBufferSetup (void);
-//void EraseBlock (int x, int y, int width, int height);
-//void DrawJagobj (jagobj_t *jo, int x, int y);
-//void UpdateBuffer (void);
-
-//extern	byte	*bufferpage;		/* draw here */
-//extern	byte	*displaypage;		/* copied to here when finished */
-
-//extern	jagobj_t	*backgroundpic;
-
-/*================= */
-
-//extern	int	gpucodestart, gpucodeend;		/* gpu funtion control */
-//extern int gpufinished;
-
-//extern		volatile int	dspcodestart, dspcodeend, dspfinished;
-
-//int DSPFunction (void *start);
-//void ReloadWad (void);
-
-/*#ifndef MARS
-extern short *palette8;
-#endif
-extern int zero, ZERO, zero2;*/
-
-//int DSPRead (void volatile *adr);
-
-extern	boolean		gamepaused;
-//extern	jagobj_t	*pausepic;
-
-//extern	pixel_t	*screens[2];
-//extern	int		workpage;
-
-//extern	int	controltype;
-
-//void WriteEEProm (void);
-//void O_SetButtonsFromControltype (void);
-//void PrintHex (int x, int y, unsigned num);
-//void DrawPlaque (jagobj_t *pl);
-#endif
 extern	boolean		gamepaused;
 
 extern	int		maxlevel;			/* highest level selectable in menu (1-25) */
@@ -1208,15 +871,11 @@ extern	int		maxlevel;			/* highest level selectable in menu (1-25) */
 extern	int		gamevbls;			/* may not really be vbls in multiplayer */
 extern	int		vblsinframe[MAXPLAYERS];		/* range from 4 to 8 */
 
-void I_DrawSbar (void);
-void S_StartSong(int music_id, int looping);
-void S_StopSong(void);
-void S_RestartSounds (void);
+/*----- */
+/*PSX Doom */
+/*----- */
 
-//------------
-//PSX Doom
-
-//CONTROL PAD
+/* CONTROL PAD */
 #define PAD_UP			(1<<12)//4096
 #define PAD_DOWN		(1<<14)//16384
 #define PAD_LEFT		(1<<15)//32768
@@ -1254,8 +913,7 @@ typedef struct
 
 extern buttons_t *BT_DATA[MAXPLAYERS];//80077DF4, 80077DF8
 
-
-//psxmain.c
+/* psxmain.c */
 #define MAX_VRAMMEM				256     // # of entries in manager cache
 #define MAX_DYNAMIC_TPAGE		11      // max # of tpages supported for dynamic memory
 #define MIN_VRAM_ALLOC_SIZE		16		// each tpage is divided into this many number of squares
@@ -1303,7 +961,7 @@ void UpdateDrawOTag(void);
 unsigned int Get_CfgCode(unsigned int *cfgdata);
 unsigned int *Get_CfgByCode(unsigned int cfgcode);
 
-//extras
+/* extras */
 //void W_AddPrim (void* prim, unsigned long* addr0, unsigned long* addr1);//OLD VERSION
 void W_AddPrim (void* prim);
 void TestRender(void);
@@ -1313,7 +971,7 @@ int RunTitle(void);
 int RunDemo(char *demoname);
 int RunCredits(void);
 
-//l_main.c
+/* l_main.c */
 extern int y_scroll;//80077FB8 uGp00000ba8
 extern int last_ticon;//80077D38 iGp00000928
 extern psxobj_t legalspic;
@@ -1323,13 +981,13 @@ void L_Stop(int exit);
 int L_Ticker(void);
 void L_Draw(void);
 
+/* c_main.c */
 void C_Start(void);
 void C_Stop(int exit);
 int C_Ticker(void);
 void C_Draw(void);
 
-
-//t_main.c
+/* t_main.c */
 extern psxobj_t loadingpic;//0x80097870
 extern psxobj_t marb01pic;//0x80097890
 extern psxobj_t buttonspic;//0x800978B0
@@ -1342,7 +1000,20 @@ void T_Stop(int exit);
 int T_Ticker(void);
 void T_Draw(void);
 
-//s_sound.c
+/* Enum for a CD music piece and also an index into the 'CD_Track' array to get an actual track number */
+enum cdmusic_t {
+    cdmusic_title_screen,
+    cdmusic_main_menu,
+    cdmusic_credits_demo,
+    cdmusic_intermission,
+    cdmusic_club_doom,
+    cdmusic_finale_doom1,
+    cdmusic_finale_doom2,
+    NUM_CD_MUSIC_TRACKS
+};
+
+extern int CD_TRACK[NUM_CD_MUSIC_TRACKS];//80073C7C
+
 void S_SetSoundVolume (int volume);
 void S_SetMusicVolume(int volume);
 void S_StopMusic(void);
@@ -1360,7 +1031,6 @@ void S_UpdateSounds(void);
 void PsxSoundInit(int sfx_volume, int mus_volume, void *data);
 void PsxSoundExit(void);
 
-
-extern int SfxVolume;	//80077420
-extern int MusVolume;	//80077424
-extern int CDVolume;	//80077428
+extern int SfxVolume;   /* range from 0 to 100 */       //80077420
+extern int MusVolume;	/* range from 0 to 100 */       //80077424
+extern int CDVolume;	/* range from 0 to 0x3CFF */    //80077428

@@ -49,7 +49,6 @@ int			validcount = 1;		/* increment every time a check is made */ //800779F4
 /* */
 /* sky mapping */
 /* */
-int			skytexture;
 boolean     rendersky;//8007801C|iGp00000c0c
 
 subsector_t *solidsubsectors[MAXSUBSECTORS];	//800A8F98                  /* List of valid ranges to scan through */

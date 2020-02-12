@@ -121,7 +121,7 @@ void END1_Start(void)//L8003D440()
 	textcount = 0;
 	text_array[0] = '\0';
 
-	psxcd_play_at_andloop(CD_TRACK[6],CDVolume,0,0,CD_TRACK[3],CDVolume,0,0);
+	psxcd_play_at_andloop(CD_TRACK[cdmusic_finale_doom1],CDVolume,0,0,CD_TRACK[cdmusic_credits_demo],CDVolume,0,0);
 	do { } while (psxcd_elapsed_sectors() == 0);
 }
 
@@ -266,7 +266,7 @@ void Cast_Start(void)//L8003D734
 	textypos = 45;
 
 	S_Lcd_Load(60);
-	psxcd_play_at_andloop(CD_TRACK[7],CDVolume,0,0,CD_TRACK[3],CDVolume,0,0);
+	psxcd_play_at_andloop(CD_TRACK[cdmusic_finale_doom2],CDVolume,0,0,CD_TRACK[cdmusic_credits_demo],CDVolume,0,0);
 	do {} while (psxcd_elapsed_sectors() == 0);
 }
 

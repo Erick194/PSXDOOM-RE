@@ -55,7 +55,7 @@ void T_Start(void)//L80034EA0()
 
 	y_scroll = 250;
 
-	psxcd_play(CD_TRACK[1], CDVolume);
+	psxcd_play(CD_TRACK[cdmusic_title_screen], CDVolume);
 	do {} while(psxcd_elapsed_sectors() == 0);
 }
 

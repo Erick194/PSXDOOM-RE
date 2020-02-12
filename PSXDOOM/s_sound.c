@@ -4,7 +4,15 @@
 
 #define abs(x) ((x)<0 ? -(x) : (x))
 
-int CD_TRACK[8] = {2,2,3,4,5,6,7,8};//80073c78
+int CD_TRACK[NUM_CD_MUSIC_TRACKS] = { //80073C7C
+    2,      // cdmusic_title_screen
+    3,      // cdmusic_main_menu
+    4,      // cdmusic_credits_demo
+    5,      // cdmusic_intermission
+    6,      // cdmusic_club_doom
+    7,      // cdmusic_finale_doom1
+    8       // cdmusic_finale_doom2
+};
 
 typedef struct mapaudio_s
 {
@@ -429,9 +437,6 @@ void S_StopAll(void)//800410F8
 
 // when to clip out sounds
 // Does not fit the large outdoor areas.
-//4640000 17984
-//640000 1600
-//400 1024
 #define S_CLIPPING_DIST (1124<<FRACBITS)	/* Clip sounds beyond this distance */
 #define S_CLOSE_DIST (100 << FRACBITS)		/* Too close! */
 #define S_ATTENUATOR ((S_CLIPPING_DIST-S_CLOSE_DIST)>>FRACBITS)

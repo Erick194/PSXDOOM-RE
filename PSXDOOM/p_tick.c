@@ -556,7 +556,7 @@ void P_Start (void)//L80029554()
 	disableload = true;
 
 	if (demoplayback)
-		psxcd_play_at_andloop(CD_TRACK[3],CDVolume,0,0,CD_TRACK[3],CDVolume,0,0);
+		psxcd_play_at_andloop(CD_TRACK[cdmusic_credits_demo],CDVolume,0,0,CD_TRACK[cdmusic_credits_demo],CDVolume,0,0);
 	else
 		S_StartMusic();
 }
