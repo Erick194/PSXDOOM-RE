@@ -30,6 +30,9 @@ PSXDOOM RE contributors (sorted alphabetically)
          
       * Fire sky width repair in title:
          https://github.com/BodbDearg/PsyDoom/commit/9bd75ff52b517bec0737d946b12db5254a1d0e95
+         
+      * Identification of error in the CD_TRACK array:
+         https://github.com/BodbDearg/PsyDoom/commit/7f75f07502bcac6557c7d026f0188f07704899a6#r37223485
                
 * **[James Haley (Quasar)](https://github.com/haleyjd)**
     * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
