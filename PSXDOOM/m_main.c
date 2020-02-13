@@ -115,12 +115,23 @@ void M_Start(void)//L80035A9C()
 	m_vframe1[0] = 0;
 
 	if (starttype == gt_single)
-		movecount = 2;
+		movecount = 2;  // Episode '1' = Ultimate DOOM, '2' = Doom II
     else
-        movecount = 54;//LIMIT LEVEL
+        movecount = 54; // For multiplayer any of the normal (non secret) maps can be selected
 
 	if (movecount < startmap)
+    {
+        // Wrap back around if we have to...
 		startmap = 1;
+    }
+    #if GH_UPDATES == 1
+    else if (startmap < 0)
+    {
+        // Start map or episode will be set to '< 0' when the Doom I is finished.
+        // This implies we want to point the user to Doom II:
+        startmap = 2;
+    }
+    #endif // GH_UPDATES
 
     psxcd_play_at_andloop(CD_TRACK[cdmusic_main_menu],CDVolume,0,0,CD_TRACK[cdmusic_main_menu],CDVolume,0,0);
 	do {} while (psxcd_elapsed_sectors() == 0);
