@@ -33,6 +33,9 @@ PSXDOOM RE contributors (sorted alphabetically)
          
       * Identification of error in the CD_TRACK array:
          https://github.com/BodbDearg/PsyDoom/commit/7f75f07502bcac6557c7d026f0188f07704899a6#r37223485
+         
+      * Identification of non-existent lines, in the first version of Psx Doom, but which were subsequently added in the Greatest Hits version:
+         https://github.com/BodbDearg/PsyDoom/commit/0457990ceebdf6e0e5cd9279e63a25b97f96a28c#r37246141
                
 * **[James Haley (Quasar)](https://github.com/haleyjd)**
     * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
