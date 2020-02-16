@@ -254,44 +254,44 @@ void AM_Drawer (void)//L8003BAB0()
 		}
 	}
 
-	// SHOW PLAYERS
-	for (i = 0; i < MAXPLAYERS; i++)
-	{
-		if ((i != consoleplayer) && (netgame != gt_coop))
-			continue;
-
-		p = &players[i];
-
-		if (p->playerstate == PST_LIVE && !(gametic & 2))
+    // SHOW PLAYERS
+    for (i = 0; i < MAXPLAYERS; i++)
+    {
+        if ((i != consoleplayer) && (netgame != gt_coop))
             continue;
 
-		color = COLOR_GREEN;
-		if ((i == consoleplayer) && (netgame == gt_coop))
-			color = COLOR_YELLOW;
+        p = &players[i];
 
-		angle = p->mo->angle;
-		x1 = p->mo->x - ox;
-		y1 = p->mo->y - oy;
+        if (p->playerstate == PST_LIVE && (gametic & 2))
+            continue;
 
-		c = finecosine[angle >> ANGLETOFINESHIFT];
-		s = finesine[angle >> ANGLETOFINESHIFT];
-		nx1 = scale * ((x1 + (c * 24)) >> 8) >> 16;
+        color = COLOR_GREEN;
+        if ((i == consoleplayer) && (netgame == gt_coop))
+            color = COLOR_YELLOW;
+
+        angle = p->mo->angle;
+        x1 = p->mo->x - ox;
+        y1 = p->mo->y - oy;
+
+        c = finecosine[angle >> ANGLETOFINESHIFT];
+        s = finesine[angle >> ANGLETOFINESHIFT];
+        nx1 = scale * ((x1 + (c * 24)) >> 8) >> 16;
         ny1 = scale * ((y1 + (s * 24)) >> 8) >> 16;
 
-		c = finecosine[((angle - ANG90) - ANG45) >> ANGLETOFINESHIFT];
-		s = finesine[((angle - ANG90) - ANG45) >> ANGLETOFINESHIFT];
-		nx2 = scale * ((x1 + (c * 24)) >> 8) >> 16;
+        c = finecosine[((angle - ANG90) - ANG45) >> ANGLETOFINESHIFT];
+        s = finesine[((angle - ANG90) - ANG45) >> ANGLETOFINESHIFT];
+        nx2 = scale * ((x1 + (c * 24)) >> 8) >> 16;
         ny2 = scale * ((y1 + (s * 24)) >> 8) >> 16;
 
-		c = finecosine[((angle + ANG90) + ANG45) >> ANGLETOFINESHIFT];
-		s = finesine[((angle + ANG90) + ANG45) >> ANGLETOFINESHIFT];
-		nx3 = scale * ((x1 + (c * 24)) >> 8) >> 16;
+        c = finecosine[((angle + ANG90) + ANG45) >> ANGLETOFINESHIFT];
+        s = finesine[((angle + ANG90) + ANG45) >> ANGLETOFINESHIFT];
+        nx3 = scale * ((x1 + (c * 24)) >> 8) >> 16;
         ny3 = scale * ((y1 + (s * 24)) >> 8) >> 16;
 
-		AM_DrawLine(color, nx1, ny1, nx2, ny2);
-		AM_DrawLine(color, nx2, ny2, nx3, ny3);
-		AM_DrawLine(color, nx1, ny1, nx3, ny3);
-	}
+        AM_DrawLine(color, nx1, ny1, nx2, ny2);
+        AM_DrawLine(color, nx2, ny2, nx3, ny3);
+        AM_DrawLine(color, nx1, ny1, nx3, ny3);
+    }
 }
 
 /*
