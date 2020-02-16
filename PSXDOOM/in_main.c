@@ -105,6 +105,10 @@ extern char *passwordChar;//80073B7C
 extern byte Passwordbuff[12];//0x80096388
 extern boolean doPassword;//80077A6C
 
+#if GH_UPDATES == 1
+extern int CurPasswordSlot;//80077A70 iGp00000660
+#endif // GH_UPDATES
+
 void IN_Start(void)//L8003C4D4()
 {
 	int i, l;
@@ -141,6 +145,10 @@ void IN_Start(void)//L8003C4D4()
 	if (nextmap < 60)
 	{
 		Encode_Password(Passwordbuff);
+		#if GH_UPDATES == 1
+		/* This causes passwords to be kept in the password selection menu and not deleted at the next level. */
+		CurPasswordSlot = 10;
+		#endif // GH_UPDATES
 	}
 
 	psxcd_play_at_andloop(CD_TRACK[cdmusic_intermission],CDVolume,0,0,CD_TRACK[cdmusic_intermission],CDVolume,0,0);
