@@ -39,7 +39,10 @@ PSXDOOM RE contributors (sorted alphabetically)
          
       * Line identification that is present in the 'Greatest Hits' version
          https://github.com/BodbDearg/PsyDoom/commit/f258d1713611a4e3ea3766f4e02266f3a0772638#r37268303
-               
+         
+      * Identificacion de una pequeña corrección en la línea 265 en am_main.cpp
+         https://github.com/BodbDearg/PsyDoom/commit/40816754f7978d4c2b3c34bf0cdb31c8e50abd0b#r37315450
+         
 * **[James Haley (Quasar)](https://github.com/haleyjd)**
     * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
 
