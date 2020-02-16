@@ -36,6 +36,9 @@ PSXDOOM RE contributors (sorted alphabetically)
          
       * Identification of non-existent lines, in the first version of Psx Doom, but which were subsequently added in the Greatest Hits version:
          https://github.com/BodbDearg/PsyDoom/commit/0457990ceebdf6e0e5cd9279e63a25b97f96a28c#r37246141
+         
+      * Line identification that is present in the 'Greatest Hits' version
+         https://github.com/BodbDearg/PsyDoom/commit/f258d1713611a4e3ea3766f4e02266f3a0772638#r37268303
                
 * **[James Haley (Quasar)](https://github.com/haleyjd)**
     * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
