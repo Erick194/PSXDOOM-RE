@@ -365,12 +365,8 @@ int Cast_Ticker(void)//L8003D888()
 				}*/
 			}
 
-			if (gamevbls < (int)gametic)
+			if (gametic > gamevbls)
 			{
-			    /* advance state*/
-			    if (--casttics > 0)
-                    return ga_nothing;  /* not time to change state yet */
-
 				if (castdeath && caststate->nextstate == S_NULL)
 				{
 					/* switch from deathstate to next monster */
@@ -388,12 +384,12 @@ int Cast_Ticker(void)//L8003D888()
 				}
 				else
 				{
-                    st = caststate->nextstate;
-                    caststate = &states[st];
-                    castframes++;
+				    /* advance state*/
+                    if (--casttics > 0)
+                        return ga_nothing;  /* not time to change state yet */
 
                     /* sound hacks.... */
-                    switch (st)
+                    switch (caststate->nextstate)
                     {
                         case S_PLAY_ATK2:	sfx = sfx_dshtgn; break;
                         case S_POSS_ATK2:	sfx = sfx_pistol; break;
@@ -428,9 +424,9 @@ int Cast_Ticker(void)//L8003D888()
                         S_StartSound(NULL, sfx);
 				}
 
-				//st = caststate->nextstate;
-				//caststate = &states[st];
-				//castframes++;
+				st = caststate->nextstate;
+				caststate = &states[st];
+				castframes++;
 
 				if (castframes == 12)
 				{   /* go into attack frame */
@@ -438,6 +434,7 @@ int Cast_Ticker(void)//L8003D888()
 						caststate = &states[mobjinfo[castorder[castnum].type].meleestate];
 					else
 						caststate = &states[mobjinfo[castorder[castnum].type].missilestate];
+
 					castonmelee ^= 1;
 
 					if (caststate == &states[S_NULL])

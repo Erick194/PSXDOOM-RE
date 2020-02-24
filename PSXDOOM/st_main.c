@@ -295,9 +295,8 @@ void ST_Ticker (void)//L80038404()
 			flashCards[ind].times = FLASHTIMES+1;
 			flashCards[ind].doDraw = false;
 		}
-
 		/* MIGHT AS WELL DO TICKING IN THE SAME LOOP! */
-		if (flashCards[ind].active && !--flashCards[ind].delay)
+		else if (flashCards[ind].active && !--flashCards[ind].delay)
 		{
 			flashCards[ind].delay = FLASHDELAY;
 			flashCards[ind].doDraw ^= 1;
