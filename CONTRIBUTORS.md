@@ -1,11 +1,6 @@
 PSXDOOM RE contributors (sorted alphabetically)
 ============================================
 
-* **[Fabien Sanglard](https://github.com/fabiensanglard)**
-
-   * Article **[The Polygons of Doom: PSX](http://fabiensanglard.net/doom_psx/index.html)**
-   * Fix cryptic magic number "mode" for Plane rendition
-
 * **[Darragh Coy (intacowetrust)](https://github.com/BodbDearg)**
 
     * Various information and code for PSX DOOM based on his own extensive reverse engineering efforts, including:
@@ -51,7 +46,12 @@ PSXDOOM RE contributors (sorted alphabetically)
       * Error identification in state blocks (else / if), in the files (f_main.c and st_main.c)
          https://github.com/BodbDearg/PsyDoom/commit/f4d6fb8b428ff0262cde02f7c77fdd71dc45d0bc#r37348133
          https://github.com/BodbDearg/PsyDoom/commit/201f293f0473e288c77b2f6e3c1a4c8b622c2968#commitcomment-37368964
-         
+
+* **[Fabien Sanglard](https://github.com/fabiensanglard)**
+
+   * Article **[The Polygons of Doom: PSX](http://fabiensanglard.net/doom_psx/index.html)**
+   * Fix cryptic magic number "mode" for Plane rendition
+   
 * **[James Haley (Quasar)](https://github.com/haleyjd)**
     * Wrong name identification in the PA_PointOnDivlineSide function, which must be called PA_DivlineSide
 
