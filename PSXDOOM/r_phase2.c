@@ -59,7 +59,8 @@ void R_WallPrep(leaf_t *lf);
 void R_Render_Wall(leaf_t *lf, psxobj_t *texture, int topheight, int bottomheight, int top_V, int bottom_V, boolean translucent);
 
 /*PLANE*/
-void R_PlanePrep(vleaf_t *vlf1, int mode);
+typedef enum PlaneType {FLOOR, CEILING} PlaneType;
+void R_PlanePrep(vleaf_t *vlf1, PlaneType mode);
 void R_Render_Plane(vleaf_t *vlf1, int zheight, psxobj_t *psxobj);
 
 /*SPRITE*/
@@ -190,16 +191,14 @@ void R_RenderAll(subsector_t *sub)//L8002C5C8
                 lf++;
             }
 
-            //Floors
             if (frontsector->floorheight < viewz)
             {
-                R_PlanePrep(leafs_side[side],0);
+                R_PlanePrep(leafs_side[side],FLOOR);
             }
 
-            //Ceilings
             if ((frontsector->ceilingpic != -1) && (viewz < frontsector->ceilingheight))
             {
-                R_PlanePrep(leafs_side[side],1);
+                R_PlanePrep(leafs_side[side],CEILING);
             }
 
             //Sprites*/
@@ -816,7 +815,7 @@ void R_Render_Wall(leaf_t *lf, psxobj_t *texture, int topheight, int bottomheigh
 	}
 }
 
-void R_PlanePrep(vleaf_t *vlf1, int mode)//L8002E178
+void R_PlanePrep(vleaf_t *vlf1, PlaneType planeType)//L8002E178
 {
 	RECT rect;
 	int pic;
@@ -825,8 +824,7 @@ void R_PlanePrep(vleaf_t *vlf1, int mode)//L8002E178
 	byte *data;
 	DR_TWIN *texwindow = (DR_TWIN*) getScratchAddr(128);//1F800200
 
-	//floor
-    if (mode == 0)
+    if (planeType == FLOOR)
     {
         pic = frontsector->floorpic;
     }
@@ -863,8 +861,7 @@ void R_PlanePrep(vleaf_t *vlf1, int mode)//L8002E178
 	SetTexWindow(texwindow, &rect);
 	W_AddPrim(texwindow);// add to order table
 
-	//floor
-    if (mode == 0)
+    if (planeType == FLOOR)
     {
         zheight = (frontsector->floorheight - viewz);
     }
