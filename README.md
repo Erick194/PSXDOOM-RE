@@ -1,6 +1,6 @@
 # PSXDOOM-RE
 
-Welcome to the complete reverse engineering of PSX Doom by [GEC], this effort took about 2 and a half years to complete, now with the departure of PsyDoom (https://github.com/BodbDearg/PsyDoom) the goal is to collaborate to your Psx Doom BackPort PC and to correct whatever you have missed.
+Welcome to the complete reverse engineering of PSX Doom by [GEC], this effort took about 2 and a half years to complete, now with the departure of PsyDoom (https://github.com/BodbDearg/PsyDoom) the objective is to collaborate with Psx Doom PC BackPort in addition to correcting and sharing information on both projects.
 
 You need to download and install the Psy-Q SDK http://www.psxdev.net/downloads.html
 
