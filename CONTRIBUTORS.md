@@ -1,6 +1,11 @@
 PSXDOOM RE contributors (sorted alphabetically)
 ============================================
 
+* **[Fabien Sanglard](https://github.com/fabiensanglard)**
+
+   * Article **[The Polygons of Doom: PSX](http://fabiensanglard.net/doom_psx/index.html)**
+   * Fix cryptic magic number "mode" for Plane rendition
+
 * **[Darragh Coy (intacowetrust)](https://github.com/BodbDearg)**
 
     * Various information and code for PSX DOOM based on his own extensive reverse engineering efforts, including:
