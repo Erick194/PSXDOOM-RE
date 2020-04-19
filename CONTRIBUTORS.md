@@ -53,6 +53,9 @@ PSXDOOM RE contributors (sorted alphabetically)
       * Wess_malloc : fix function signature
          https://github.com/BodbDearg/PsyDoom/commit/a89ae26943fe08dc213d77bcabc50090c74316f0
 
+      * Return fix in wess_seq_loader_init function
+         https://github.com/BodbDearg/PsyDoom/commit/81f2bdc65724d2d7bce01e89900845803edeb957#r38278381
+
 * **[Fabien Sanglard](https://github.com/fabiensanglard)**
 
    * Article **[The Polygons of Doom: PSX](http://fabiensanglard.net/doom_psx/index.html)**

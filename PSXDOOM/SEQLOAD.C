@@ -323,10 +323,10 @@ int wess_seq_loader_init(void *input_pm_stat, char *seqfile, enum OpenSeqHandleF
 				wess_seq_err(SEQLOAD_FOPEN);
 				return 0;
 			}
-			return 1;
 		}
 	}
-	return 0;
+
+	return 1;
 }
 
 void wess_seq_loader_exit(void)//80044EAC
