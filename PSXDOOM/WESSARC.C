@@ -102,7 +102,7 @@ void wess_low_level_exit(void)//80043888
     return;
 }
 
-char *wess_malloc(char *mem)//80043890
+void *wess_malloc(int size)//80043890
 {
     return 0;
 }

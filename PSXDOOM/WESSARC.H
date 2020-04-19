@@ -304,7 +304,7 @@ extern void init_WessTimer(void);
 extern void exit_WessTimer(void);
 
 extern void wess_low_level_exit(void);
-extern char *wess_malloc(char *mem);
+extern void *wess_malloc(int size);
 extern void wess_free(char *mem);
 
 #endif // _WESSARC_H

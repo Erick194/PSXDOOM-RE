@@ -316,7 +316,7 @@ int wess_load_module (void *wmd_ptr,
 	if (memory_pointer == NULL)
 	{
 		wmd_mem_is_mine = 1;
-		wmd_mem = wess_malloc((char *)memory_allowance);
+		wmd_mem = (char *)wess_malloc(memory_allowance);
 		if(wmd_mem == NULL)
 		{
 			return(module_loaded);
