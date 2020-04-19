@@ -11,9 +11,9 @@ extern pmasterstat *pm_stat;
 extern int seq_loader_enable;           //80075790
 extern char *loaderfile;		        //80075794
 extern pmasterstat *ref_pm_stat;        //80075798
-extern int ref_max_seq_num;            //8007579C
-extern char seq_midi_byte_00;           //800757A0
-extern char seq_midi_byte_22;           //800757A1
+extern int ref_max_seq_num;             //8007579C
+extern char Driver_Init;                //800757A0
+extern char Reset_Gates;                //800757A1
 extern int	opencount;				    //800757A4
 extern int(*Seq_Error_func)(int, int);  //800757A8
 extern int Seq_Error_module;            //800757AC
@@ -165,7 +165,7 @@ int wess_seq_load_sub(int seqnum, void *memptr)//800445EC
 
 			if (loadit == 0)
 			{
-				seqseek = module_seek(fp_seq_file, (seq_track_header.labellist_count * sizeof(long)) + seq_track_header.data_size, PSXCD_SEEK_SET);
+				seqseek = module_seek(fp_seq_file, (seq_track_header.labellist_count * sizeof(long)) + seq_track_header.data_size, PSXCD_SEEK_CUR);
 				if (seqseek != 0)
 				{
 					wess_seq_err(SEQLOAD_FSEEK);
@@ -180,7 +180,7 @@ int wess_seq_load_sub(int seqnum, void *memptr)//800445EC
 
 				if (seq_track_header.voices_type == GENERIC_ID)
 				{
-					ptrk_info->trk_hdr.voices_type = 0;
+					ptrk_info->trk_hdr.voices_type = NoSound_ID;
 
 					if (seq_track_header.voices_class == SNDFX_CLASS || seq_track_header.voices_class == SFXDRUMS_CLASS)
 					{
@@ -261,8 +261,8 @@ int wess_seq_load_sub(int seqnum, void *memptr)//800445EC
 			ptrk_info->plabellist = (unsigned long *)pmem;
 			ptrk_info->ptrk_data = (char *)pmem;
 
-			*ptrk_info->ptrk_data = seq_midi_byte_00;
-			*(ptrk_info->ptrk_data + 1) = seq_midi_byte_22;
+			*ptrk_info->ptrk_data = Driver_Init;
+			*(ptrk_info->ptrk_data + 1) = Reset_Gates;
 			pmem += (ptrk_info->trk_hdr.data_size);
 
 #if _ALIGN4_ == 1
@@ -272,12 +272,10 @@ int wess_seq_load_sub(int seqnum, void *memptr)//800445EC
 			pmem += (unsigned int)pmem & 2;
 #endif
 			(ref_pm_stat->pmod_info->pseq_info+seqnum)->seq_hdr.tracks = 1;
-			//printf("wess_seq_load_sub cragado2\n");
 		}
 		else
 		{
 			(ref_pm_stat->pmod_info->pseq_info+seqnum)->seq_hdr.tracks = psq_info->trkstoload;
-			//printf("wess_seq_load_sub cragado1\n");
 		}
 
 		close_sequence_data();

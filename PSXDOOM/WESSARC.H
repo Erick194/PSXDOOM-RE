@@ -15,6 +15,46 @@ enum SoundHardwareTags {
     SNDHW_TAG_MAX//5
 };
 
+// Driver/sequencer command ids
+enum DriverCmd {
+    DriverInit          = 0,
+    DriverExit          = 1,
+    DriverEntry1        = 2,
+    DriverEntry2        = 3,
+    DriverEntry3        = 4,
+    TrkOff              = 5,
+    TrkMute             = 6,
+    PatchChg            = 7,
+    PatchMod            = 8,
+    PitchMod            = 9,
+    ZeroMod             = 10,
+    ModuMod             = 11,
+    VolumeMod           = 12,
+    PanMod              = 13,
+    PedalMod            = 14,
+    ReverbMod           = 15,
+    ChorusMod           = 16,
+    NoteOn              = 17,
+    NoteOff             = 18,
+    StatusMark          = 19,
+    GateJump            = 20,
+    IterJump            = 21,
+    ResetGates          = 22,
+    ResetIters          = 23,
+    WriteIterBox        = 24,
+    SeqTempo            = 25,
+    SeqGosub            = 26,
+    SeqJump             = 27,
+    SeqRet              = 28,
+    SeqEnd              = 29,
+    TrkTempo            = 30,
+    TrkGosub            = 31,
+    TrkJump             = 32,
+    TrkRet              = 33,
+    TrkEnd              = 34,
+    NullEvent           = 35
+};
+
 //LCD FILE Structs
 typedef struct
 {
@@ -220,7 +260,7 @@ typedef struct
 	unsigned char	*ppos;			//*52   //13
 	unsigned long   *plabellist;	//*56   //14
 	unsigned long   *psubstack;		//*60   //15
-	unsigned long   *psp;			//*64   //16
+	unsigned char	*psp;			//*64   //16
 	unsigned long   *pstackend;		//*68   //17
 	unsigned int	data_size;		//*72   //18
 	unsigned int	data_space;		//*76   //19

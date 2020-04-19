@@ -8,8 +8,8 @@ extern void (**CmdFuncArr[10])(track_status *);
 extern void(*DrvFunctions[36])();
 
 char *Read_Vlq(char *pstart, void *deltatime);
-char *Write_Vlq(char *dest, unsigned int value);
-int Len_Vlq(unsigned int value);
+char *Write_Vlq(char *dest, unsigned int deltatime);
+int Len_Vlq(unsigned int deltatime);
 
 void Eng_DriverInit (master_status_structure *pm_stat);
 void Eng_DriverExit (track_status *ptk_stat);
@@ -153,22 +153,22 @@ char *Read_Vlq(char *pstart, void *deltatime)//L80035F80()
 	return pstart;
 }
 
-char *Write_Vlq(char *dest, unsigned int value)//L8004744C()
+char *Write_Vlq(char *dest, unsigned int deltatime)//L8004744C()
 {
-	char data[5];
+	char data[8];
 	char *ptr;
 
-    data[0] = (value & 0x7f);
+    data[0] = (deltatime & 0x7f);
 	ptr = (char*)&data+1;
 
-	value >>= 7;
-	if (value)
+	deltatime >>= 7;
+	if (deltatime)
 	{
 		do
 		{
-			*ptr++ = ((value & 0x7f) | 0x80);
-			value >>= 7;
-		} while (value);
+			*ptr++ = ((deltatime & 0x7f) | 0x80);
+			deltatime >>= 7;
+		} while (deltatime);
 	}
 
 	do
@@ -180,36 +180,13 @@ char *Write_Vlq(char *dest, unsigned int value)//L8004744C()
 	return dest;
 }
 
-int Len_Vlq(unsigned int value)//L800474AC()
+int Len_Vlq(unsigned int deltatime)//L800474AC()
 {
-    char buff[16];
-	char data[5];
-	char *ptr;
-	char *dest, *start;
-
-	dest = start = (char*)&buff;
-
-	data[0] = (value & 0x7f);
-	ptr = (char*)&data + 1;
-
-	value >>= 7;
-	if (value)
-	{
-		do
-		{
-			*ptr++ = ((value & 0x7f) | 0x80);
-			value >>= 7;
-		} while (value);
-	}
-
-	do
-	{
-		ptr--;
-		*dest++ = *ptr;
-	} while (*ptr & 0x80);
-
-	return (int)(dest - start);
+    char start[8];
+    char* end = Write_Vlq(start, deltatime);
+    return (int)(end - start);
 }
+
 //-----------------------------------------------------------
 // Engine System
 //-----------------------------------------------------------
@@ -594,7 +571,7 @@ void Eng_SeqGosub (track_status *ptk_stat)//L80047EC8()
 			{
 				eng_ptrk_stat_2 = (eng_ptsbase + (*eng_ptrk_indxs3));
 
-				eng_ptrk_stat_2->psp = (unsigned long *)eng_ptrk_stat_2->ppos + skip_table[26];
+				*eng_ptrk_stat_2->psp = (eng_ptrk_stat_2->ppos + skip_table[26]);
 				eng_ptrk_stat_2->psp++;
 				eng_plabellist3 = eng_ptrk_stat_2->pstart + *(eng_ptrk_stat_2->plabellist + eng_labelnum3);
 				eng_ptrk_stat_2->ppos = eng_plabellist3;
@@ -665,7 +642,7 @@ void Eng_SeqRet (track_status *ptk_stat)//L8004824C()
 		{
 			eng_ptrk_stat_4 = (eng_ptsbase + (*eng_ptrk_indxs5));
 			eng_ptrk_stat_4->psp--;
-			eng_ptrk_stat_4->ppos = (unsigned char*)eng_ptrk_stat_4->psp;
+			eng_ptrk_stat_4->ppos = *eng_ptrk_stat_4->psp;
 
 			if (!--eng_tracks_active5) break;
 		}
@@ -744,7 +721,7 @@ void Eng_TrkGosub (track_status *ptk_stat)//L800486A0()
 	position = (unsigned int)(*(ptk_stat->ppos + 1) | (*(ptk_stat->ppos + 2) << 8));
 	if ((position >= 0) && (position < ptk_stat->labellist_count))
 	{
-		ptk_stat->psp = (unsigned long *)ptk_stat->ppos + skip_table[26];
+		*ptk_stat->psp = (ptk_stat->ppos + skip_table[26]);
 		ptk_stat->psp++;
 		ptk_stat->ppos = ptk_stat->pstart + *(ptk_stat->plabellist + position);
 		ptk_stat->flags |= TRK_SKIP;
@@ -770,7 +747,7 @@ void Eng_TrkRet (track_status *ptk_stat)//L800487A4()
 {
     //printf("Eng_TrkRet\n");
 	ptk_stat->psp--;
-	ptk_stat->ppos = (unsigned char *)ptk_stat->psp;
+	ptk_stat->ppos = *ptk_stat->psp;
 	ptk_stat->ppos = Read_Vlq(ptk_stat->ppos, &ptk_stat->deltatime);
 	ptk_stat->flags |= TRK_SKIP;
 }

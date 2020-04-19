@@ -12,8 +12,8 @@ extern int seq_loader_enable;           //80075790
 extern char *seqfilename;		        //80075794
 extern pmasterstat *seq_pm_stat;        //80075798
 extern int seq_maxsequences;            //8007579C
-extern char seq_midi_byte_00;           //800757A0
-extern char seq_midi_byte_22;           //800757A1
+extern char Driver_Init;                //800757A0
+extern char Reset_Gates;                //800757A1
 extern int	seqopen;				    //800757A4
 extern int(*Seq_Error_func)(int, int);  //800757A8
 extern int Seq_Error_module;            //800757AC

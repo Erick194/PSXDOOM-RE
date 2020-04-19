@@ -1,5 +1,6 @@
-PSXDOOM RE contributors (sorted alphabetically)
-============================================
+===================================================
+= PSXDOOM RE contributors (sorted alphabetically) =
+===================================================
 
 * **[Darragh Coy (intacowetrust)](https://github.com/BodbDearg)**
 
@@ -55,6 +56,16 @@ PSXDOOM RE contributors (sorted alphabetically)
 
       * Return fix in wess_seq_loader_init function
          https://github.com/BodbDearg/PsyDoom/commit/81f2bdc65724d2d7bce01e89900845803edeb957#r38278381
+
+      * Error identification on the line (168) in wess_seq_load_sub function
+         https://github.com/BodbDearg/PsyDoom/commit/89b38b23f6e0067d7ac123960c0cdc6064a8ef51#r38286066
+
+      * Changes in data types in variable ptk_stat->psp
+         https://github.com/BodbDearg/PsyDoom/commit/3eea78ba5a31da31f1007061f95bd6e32d275754#commitcomment-38312476
+         https://github.com/BodbDearg/PsyDoom/commit/b952d4be8126ae1fa16f3dfdb87b190c5db6aabb
+
+      * Changes in (Write_Vlq and Len_Vlq) functions
+         https://github.com/BodbDearg/PsyDoom/commit/f5e0d69afeb1dee45b699002ee26fe513ae2271d
 
 * **[Fabien Sanglard](https://github.com/fabiensanglard)**
 

@@ -5,6 +5,7 @@
 #include <libspu.h>
 #include "psxspu.h"
 #include "wessapi.h"
+#include "wessarc.h"
 #include "lcdload.h"
 
 // Variables Aquí para que funcionen correctamante con WessInterruptHandler
@@ -94,8 +95,8 @@ int seq_loader_enable = 0;          //80075790
 char *loaderfile = 0;		        //80075794
 pmasterstat *ref_pm_stat = 0;       //80075798
 int ref_max_seq_num = 0;            //8007579C
-char seq_midi_byte_00 = 0x00;       //800757A0
-char seq_midi_byte_22 = 0x22;       //800757A1
+char Driver_Init = DriverInit;      //800757A0
+char Reset_Gates = ResetGates;      //800757A1
 int	opencount = 0;				    //800757A4
 int(*Seq_Error_func)(int, int) = 0; //800757A8
 int Seq_Error_module = 0;           //800757AC
