@@ -220,7 +220,7 @@ static void cbready(int intr, u_char *result)//8003F200
 
     cdl_intr = intr;
     cdl_stat = result[0];
-    if((result[0]&0x20)&&async_on&&(cdl_com==CdlReadN))
+    if((result[0]&CdlStatRead)&&async_on&&(cdl_com==CdlReadN))
     {
         //if shell open, hang till closed then reread
         readcount++;
@@ -310,7 +310,7 @@ static void cbready(int intr, u_char *result)//8003F200
     }
 
 
-    if(result[0]&0x80/*cdl_com==CdlPlay*/)
+    if(result[0]&CdlStatPlay/*cdl_com==CdlPlay*/)
     {
         //if shell open, hang till closed then restart play
         if (intr == CdlDataReady)
@@ -334,7 +334,7 @@ static void cbready(int intr, u_char *result)//8003F200
                 *(int *)&lastloc = 0;
                 cdl_com = CdlNop;
                 //if playflag and loopflag, play again
-                if(playflag&&loopflag)
+                if(playflag||loopflag) //if(playflag&&loopflag)
                 {
                     psxcd_play_at_andloop(looptrack, loopvol, loopsectoroffset, loopfadeuptime,
                                            looptrack, loopvol, loopsectoroffset, loopfadeuptime);
@@ -582,7 +582,7 @@ int psxcd_async_on(void)//8003F92C
         check_intr = CdSync(1,(u_char *)check_result);
         if(critical_error ||
            (check_intr==CdlDiskError) ||
-           (check_result[0] & !(CdlStatSeek|CdlStatRead|CdlStatStandby)) ||
+           //(check_result[0] & !(CdlStatSeek|CdlStatRead|CdlStatStandby)) || // This line of code are blocked in Psx Doom
            !(check_result[0] & CdlStatStandby))
         {
             CdFlush();
@@ -612,7 +612,7 @@ int psxcd_seeking_for_play(void)//8003FA34
     {
         check_intr = CdSync(1,(u_char *)check_result);
         if((check_intr==CdlDiskError) ||
-           //(check_result[0] & !(CdlStatSeek|CdlStatPlay|CdlStatStandby)) ||
+           //(check_result[0] & !(CdlStatSeek|CdlStatPlay|CdlStatStandby)) || // This line of code are blocked in Psx Doom
            !(check_result[0] & CdlStatStandby))
         {
             CdFlush();
@@ -642,7 +642,7 @@ int psxcd_waiting_for_pause(void)//8003FAE4
     {
         check_intr = CdSync(1,(u_char *)check_result);
         if((check_intr==CdlDiskError) ||
-           (check_result[0] & !(CdlStatSeek|CdlStatRead|CdlStatPlay|CdlStatStandby)) ||
+           //(check_result[0] & !(CdlStatSeek|CdlStatRead|CdlStatPlay|CdlStatStandby)) || // This line of code are blocked in Psx Doom
            !(check_result[0] & CdlStatStandby))
         {
             CdFlush();
@@ -770,8 +770,6 @@ int psxcd_async_read(void *destptr,int readbytes,PsxCd_File *fileptr)//8003FC14
                 cur_cmd++;
 
             }
-
-
 
             bytestoread -= bytestocopy;
             pdest += bytestocopy;
@@ -936,31 +934,24 @@ int psxcd_seek(PsxCd_File *fileptr,int seekpos,int seekmode)//80040444
         return(0);
     }
 
-    if(seekmode==0)
+    if(seekmode==PSXCD_SEEK_SET)
     {
-        // SEEK_SET code:
-
         sector_index = (seekpos / CD_ROM_SECTOR_SIZE) + CdPosToInt(&fileptr->file.pos);
 
         CdIntToPos(sector_index,&fileptr->new_io_loc);
         fileptr->io_block_offset = seekpos % CD_ROM_SECTOR_SIZE;
 
-    } else if(seekmode==1) {
-      // SEEK_CUR code:
-
+    } else if(seekmode==PSXCD_SEEK_CUR) {
         sector_index = ((seekpos+fileptr->io_block_offset) / CD_ROM_SECTOR_SIZE) + CdPosToInt(&cur_io_loc);
 
         CdIntToPos(sector_index,&fileptr->new_io_loc);
         fileptr->io_block_offset = (seekpos+fileptr->io_block_offset) % CD_ROM_SECTOR_SIZE;
 
-    } else {
-      // SEEK_END code:
-
+    } else { //PSXCD_SEEK_END
         sector_index = ((fileptr->file.size-seekpos) / CD_ROM_SECTOR_SIZE) + CdPosToInt(&fileptr->file.pos);
 
         CdIntToPos(sector_index,&fileptr->new_io_loc);
         fileptr->io_block_offset = (fileptr->file.size-seekpos) % CD_ROM_SECTOR_SIZE;
-
     }
     return(0);
 
@@ -1153,7 +1144,7 @@ int psxcd_play_status(void)//80040A30
     {
         check_intr = CdSync(1,(u_char *)check_result);
         if((check_intr==CdlDiskError) ||
-           (check_result[0] & !(CdlStatSeek|CdlStatPlay|CdlStatStandby)) ||
+           //(check_result[0] & !(CdlStatSeek|CdlStatPlay|CdlStatStandby)) || // This line of code are blocked in Psx Doom
            !(check_result[0] & CdlStatStandby))
         {
             CdFlush();
