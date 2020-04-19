@@ -46,6 +46,9 @@ PSXDOOM RE contributors (sorted alphabetically)
       * Error identification in state blocks (else / if), in the files (f_main.c and st_main.c)
          https://github.com/BodbDearg/PsyDoom/commit/f4d6fb8b428ff0262cde02f7c77fdd71dc45d0bc#r37348133
          https://github.com/BodbDearg/PsyDoom/commit/201f293f0473e288c77b2f6e3c1a4c8b622c2968#commitcomment-37368964
+         
+      * Non-existent lines are blocked in Psx Doom
+         https://github.com/BodbDearg/PsyDoom/commit/d60da8761208e3cb137e5b5fb85c6dd3a9ff514c#r37805111
 
 * **[Fabien Sanglard](https://github.com/fabiensanglard)**
 
