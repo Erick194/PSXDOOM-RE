@@ -49,6 +49,9 @@ PSXDOOM RE contributors (sorted alphabetically)
          
       * Non-existent lines are blocked in Psx Doom
          https://github.com/BodbDearg/PsyDoom/commit/d60da8761208e3cb137e5b5fb85c6dd3a9ff514c#r37805111
+         
+      * Wess_malloc : fix function signature
+         https://github.com/BodbDearg/PsyDoom/commit/a89ae26943fe08dc213d77bcabc50090c74316f0
 
 * **[Fabien Sanglard](https://github.com/fabiensanglard)**
 
