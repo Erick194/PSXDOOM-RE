@@ -97,7 +97,6 @@ void P_XYMovement(mobj_t *mo)//L800138AC()
 			{
 				mo->latecall = L_SkullBash;
 				mo->extramobj = hitthing;
-				return;
 			}
 
 			// explode a missile
