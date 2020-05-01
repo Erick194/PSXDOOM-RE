@@ -1,6 +1,6 @@
-===================================================
-= PSXDOOM RE contributors (sorted alphabetically) =
-===================================================
+
+= PSXDOOM RE contributors (sorted alphabetically)
+= 
 
 * **[Darragh Coy (intacowetrust)](https://github.com/BodbDearg)**
 
@@ -66,6 +66,9 @@
 
       * Changes in (Write_Vlq and Len_Vlq) functions
          https://github.com/BodbDearg/PsyDoom/commit/f5e0d69afeb1dee45b699002ee26fe513ae2271d
+         
+      * Non-existent return statement identification
+         https://github.com/BodbDearg/PsyDoom/commit/1a01906c71ea7aadd5a1393cb0cf3365ed68138e#r38841312
 
 * **[Fabien Sanglard](https://github.com/fabiensanglard)**
 
