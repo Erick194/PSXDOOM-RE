@@ -1,6 +1,6 @@
 
 = PSXDOOM RE contributors (sorted alphabetically)
-= 
+=
 
 * **[Darragh Coy (intacowetrust)](https://github.com/BodbDearg)**
 
@@ -69,6 +69,15 @@
          
       * Non-existent return statement identification
          https://github.com/BodbDearg/PsyDoom/commit/1a01906c71ea7aadd5a1393cb0cf3365ed68138e#r38841312
+         
+      * Identification Missing sum in damagecount
+         https://github.com/BodbDearg/PsyDoom/commit/69dd2e3ad910eb1dcf5bd159651aafea7e21e3fa
+         
+      * Automap: fix a PSX DOOM bug where lines flagged with ML_DONTDRAW
+         https://github.com/BodbDearg/PsyDoom/commit/5a9b4059ac7a18b724edc380c26fa3fc6e548f5a
+         
+      * Range checks, added from Psy Doom to avoid alterations in P_RadiusAttack
+         https://github.com/BodbDearg/PsyDoom/commit/107f7d3d91824e06f3b9e5106e3498e98a590ebe
 
 * **[Fabien Sanglard](https://github.com/fabiensanglard)**
 
