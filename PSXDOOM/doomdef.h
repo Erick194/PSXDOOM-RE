@@ -3,13 +3,15 @@
 /* Fixes and Version Update Here*/
 //NEWS
 #define SHOWFPS  1
-#define ENABLE_NIGHTMARE  1     //Originally Activated in the project [GEC] Master Edition
+#define ENABLE_NIGHTMARE  1         // Originally Activated in the project [GEC] Master Edition
 
 //FIXES
-#define FIX_LINEDEFS_DELETION  1    //Fixes for the 'linedef deletion' bug. From PsyDoom
+#define FIX_LINEDEFS_DELETION  1    // Fixes for the 'linedef deletion' bug. From PsyDoom
+#define RANGE_CHECKS  1             // Only if necessary to avoid alterations in the game
+#define FIX_ML_DONTDRAW  1          // Automap: fix a PSX DOOM bug where lines flagged with ML_DONTDRAW would draw when the computer map powerup is obtained. From PsyDoom
 
 //UPDATES
-#define GH_UPDATES 1    //Psx Doom Greatest Hits Updates
+#define GH_UPDATES 1                // Psx Doom Greatest Hits Updates
 
 #define	VINT	int
 

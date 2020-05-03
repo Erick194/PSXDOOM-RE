@@ -196,6 +196,11 @@ void AM_Drawer (void)//L8003BAB0()
 			(!(p->powers[pw_allmap] + (p->cheats & CF_ALLLINES))))
 			continue;
 
+        #if FIX_ML_DONTDRAW == 1
+        if (p->powers[pw_allmap] && !(p->cheats & CF_ALLLINES) && (line->flags & ML_DONTDRAW))
+            continue;
+        #endif // FIX_ML_DONTDRAW
+
 		x1 = (scale * (line->v1->x - ox >> 8)) >> 16;
 		y1 = (scale * (line->v1->y - oy >> 8)) >> 16;
 		x2 = (scale * (line->v2->x - ox >> 8)) >> 16;

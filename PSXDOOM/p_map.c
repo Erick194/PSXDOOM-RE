@@ -354,6 +354,20 @@ void P_RadiusAttack (mobj_t *spot, mobj_t *source, int damage)//L8001BCBC()
 	xh = (spot->x + dist - bmaporgx)>>MAPBLOCKSHIFT;
 	xl = (spot->x - dist - bmaporgx)>>MAPBLOCKSHIFT;
 
+	// Clamp these coords to the valid range of the blockmap to avoid potential undefined behavior near map edges
+	#if RANGE_CHECKS == 1
+    if (xl<0)
+        xl = 0;
+    if (yl<0)
+        yl = 0;
+
+    if (xh>= bmapwidth)
+        xh = bmapwidth -1;
+
+    if (yh>= bmapheight)
+        yh = bmapheight -1;
+    #endif // RANGE_CHECKS
+
 	bombspot = spot;
 	bombsource = source;
 	bombdamage = damage;
