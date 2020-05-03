@@ -774,7 +774,9 @@ void P_DamageMobj (mobj_t *target, mobj_t *inflictor, mobj_t *source, int damage
 		if (player->health < 0)
 			player->health = 0;
 		player->attacker = source;
-		player->damagecount += (damage>>1);	/* add damage after armor / invuln */
+
+		// Tweak made in PSX version: add '1' here so that all damage causes a palette flash
+        player->damagecount += 1 + (damage>>1);	/* add damage after armor / invuln */
 	}
 
 	/* */
