@@ -77,7 +77,7 @@ set PSYQ_PATH=C:\psyq\bin
 
 ::child:
 	ccpsx -comments-c++ -Wreturn-type -c -O2 -g -o obj\psxmain.obj  psxmain.c
-	psylink /m /g /c /q /o$80010000 @main.lnk,main.cpe,main.map
+	psylink /m /g /c /q /o$80010000 @main.lnk,main.cpe,main.sym,main.map
 	::cpe2x main.cpe
 	cpe2x_gec main.cpe
 
