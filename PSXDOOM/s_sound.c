@@ -337,7 +337,7 @@ void S_Lcd_Load(int map_indx)//80040E88
 			}
 			S_DoBlockClear(&mapsfxblk);
 		}
-		if (map_indx == 60)
+		if (map_indx == LASTLEVEL)
 		{
 			S_DoBlockClear(&doomsfxblk);
 			sram_load = 0;

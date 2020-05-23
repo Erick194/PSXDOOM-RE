@@ -186,8 +186,8 @@ void P_SpawnStrobeFlashFast(sector_t *sector)//L8001B08C()
 	flash->darktime = 1;
 	flash->brighttime = 1;
 	flash->thinker.function = T_StrobeFlash;
-	flash->maxlight = 10;
-	flash->minlight = sector->lightlevel;
+	flash->minlight = 10;
+	flash->maxlight = sector->lightlevel;
 	flash->count = 1;
 
 	if (flash->minlight == flash->maxlight)

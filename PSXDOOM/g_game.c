@@ -488,7 +488,7 @@ void G_RunGame (void)//L800134FC()
         }
         else
         {
-            if (nextmap > 60)
+            if (nextmap > LASTLEVEL)
             {
                 /* run the finale if needed */
                 MiniLoop(Cast_Start, Cast_Stop, Cast_Ticker, Cast_Drawer);

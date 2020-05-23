@@ -265,7 +265,7 @@ void Cast_Start(void)//L8003D734
 	casttics = states[mobjinfo[castorder[castnum].type].seestate].tics;
 	textypos = 45;
 
-	S_Lcd_Load(60);
+	S_Lcd_Load(LASTLEVEL);
 	psxcd_play_at_andloop(CD_TRACK[cdmusic_finale_doom2],CDVolume,0,0,CD_TRACK[cdmusic_credits_demo],CDVolume,0,0);
 	do {} while (psxcd_elapsed_sectors() == 0);
 }

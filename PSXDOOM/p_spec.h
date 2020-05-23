@@ -38,6 +38,12 @@ typedef struct
 
 extern	anim_t	anims[MAXANIMS], *lastanim;
 
+#if GH_UPDATES ==  1
+extern card_t   MapBlueKeyType;
+extern card_t   MapRedKeyType;
+extern card_t   MapYellowKeyType;
+#endif // GH_UPDATES
+extern int enemyspecial;   //80077DB4
 
 /* */
 /*	Animating line specials */

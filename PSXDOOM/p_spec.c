@@ -201,6 +201,33 @@ fixed_t	P_FindHighestFloorSurrounding(sector_t *sec)//L80026380()
 /*================================================================== */
 fixed_t	P_FindNextHighestFloor(sector_t *sec,int currentheight)//L80026418()
 {
+    #if P_FNHF_UPDATE == 1
+    // PSYDOOM: rewrite this to eliminate potential buffer overflow and also an undefined answer when there is no next higher floor
+    int         lineIdx;
+    line_t      *line;
+    sector_t    *pNextSector;
+    fixed_t     floorH;
+    fixed_t     nextHighestFloor = MAXINT;
+
+    for (lineIdx = 0; lineIdx < sec->linecount; ++lineIdx)
+    {
+        line = sec->lines[lineIdx];
+        pNextSector = getNextSector(line, sec);
+
+        if (!pNextSector)
+            continue;
+
+        floorH = pNextSector->floorheight;
+
+        if ((floorH > currentheight) && (floorH < nextHighestFloor))
+        {
+            nextHighestFloor = floorH;
+        }
+    }
+
+    // If there is no next highest floor return the input height rather than something undefined
+    return (nextHighestFloor != MAXINT) ? nextHighestFloor : currentheight;
+    #else
 	int			i;
 	int			h;
 	int			min;
@@ -228,6 +255,7 @@ fixed_t	P_FindNextHighestFloor(sector_t *sec,int currentheight)//L80026418()
 			min = heightlist[i];
 
 	return min;
+	#endif //P_FNHF_UPDATE
 }
 
 /*================================================================== */
@@ -967,7 +995,7 @@ void P_SpawnDelayTimer(int tics, void(*action)())//L80027640()
 
 void T_CountdownTimer(delay_t *timer)//L800276B0()
 {
-	if (!timer->tics--)
+	if ((timer->tics--) <= 0)
 	{
 		timer->finishfunc();
 		P_RemoveThinker(&timer->thinker);
@@ -1022,12 +1050,21 @@ void P_SecretExitLevel(int map)//L80027778()
 ===============================================================================
 */
 
-extern int enemyspecial;   //80077DB4
+#if GH_UPDATES ==  1
+card_t   MapBlueKeyType;     //0x80077E9C
+card_t   MapRedKeyType;      //0x8007821C
+card_t   MapYellowKeyType;   //0x800780A0
+#endif // GH_UPDATES
+int      enemyspecial;   //80077DB4
 
 void P_SpawnSpecials (void)//L800277E4()
 {
 	sector_t	*sector;
 	int		i;
+
+	#if GH_UPDATES ==  1
+	mobj_t      *mo;
+	#endif // GH_UPDATES
 
 	/* */
 	/*	Init special SECTORs */
@@ -1067,19 +1104,19 @@ void P_SpawnSpecials (void)//L800277E4()
 		case 14:	/* DOOR RAISE IN 5 MINUTES */
 			P_SpawnDoorRaiseIn5Mins(sector, i);
 			break;
-		case 17:
+		case 17:    /* FIRE FLICKER */
 			P_SpawnFireFlicker(sector);
 			break;
-		case 200:
+		case 200:   /* GLOW TO DARK */
 			P_SpawnGlowingLight(sector, glowto10);
 			break;
-		case 201:
+		case 201:   /* GLOW TO BRIGHT */
 			P_SpawnGlowingLight(sector, glowto255);
 			break;
-		case 202:
+		case 202:   /* RAPID STROBE FLASH (PSX ADDITION) */
 			P_SpawnStrobeFlashFast(sector);
 			break;
-		case 204:
+		case 204:   /* STROBE FLASH */
 			P_SpawnStrobeFlash(sector, TURBODARK, 0);
 			break;
 		}
@@ -1094,10 +1131,10 @@ void P_SpawnSpecials (void)//L800277E4()
 		switch(lines[i].special)
 		{
 			//case 48:	/* EFFECT FIRSTCOL SCROLL+ */
-			case 200:
-			case 201:
-			case 202:
-			case 203:
+			case 200:   /* EFFECT: SCROLL LEFT */
+			case 201:   /* EFFECT: SCROLL RIGHT */
+			case 202:   /* EFFECT: SCROLL UP */
+			case 203:   /* EFFECT: SCROLL DOWN */
 			    if(numlinespecials < MAXLINEANIMS)
                 {
                     linespeciallist[numlinespecials] = &lines[i];
@@ -1140,11 +1177,32 @@ void P_SpawnSpecials (void)//L800277E4()
 		}
 	}
 
+	#if GH_UPDATES ==  1
+	/* */
+	/* Info From PsyDoom */
+	/* Run through all map objects to see if any skull keys are being used instead of keycards. */
+    /* This is required for the correct sprite to be used for HUD key flashes (skull vs card). */
+    /* */
+    MapRedKeyType = it_redcard;
+    MapBlueKeyType = it_bluecard;
+    MapYellowKeyType = it_yellowcard;
+
+    for (mo = mobjhead.next ; mo != &mobjhead ; mo = mo->next)
+    {
+        switch (mo->type)
+        {
+            case MT_MISC7:  MapYellowKeyType  = it_yellowskull;   break;
+            case MT_MISC8:  MapRedKeyType     = it_redskull;      break;
+            case MT_MISC9:  MapBlueKeyType    = it_blueskull;     break;
+        }
+    }
+    #endif // GH_UPDATES
+
 	/* */
 	/*	Init other misc stuff */
 	/* */
-	D_memset(activeceilings, 0, MAXCEILINGS * sizeof(ceiling_t));
-	D_memset(activeplats, 0, MAXPLATS * sizeof(plat_t));
+	D_memset(activeceilings, 0, MAXCEILINGS * sizeof(ceiling_t*));
+	D_memset(activeplats, 0, MAXPLATS * sizeof(plat_t*));
 	D_memset(buttonlist, 0, MAXBUTTONS * sizeof(button_t));
 }
 

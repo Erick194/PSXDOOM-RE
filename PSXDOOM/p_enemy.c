@@ -1124,11 +1124,26 @@ void A_PainShootSkull(mobj_t *actor, angle_t angle)//L80018194()
 	angle_t	an;
 	int		prestep;
 	int		count;
+
+	#if FIX_PE_SKULL_LIMIT == 1
+	mobj_t	*mo;
+	#else
 	thinker_t*	currentthinker;
+	#endif // FIX_PE_SKULL_LIMIT
+
 
 	// count total number of skull currently on the level
 	count = 0;
+	#if FIX_PE_SKULL_LIMIT == 1
+	for (mo=mobjhead.next ; mo != &mobjhead ; mo=mo->next)
+	{
+		if ((mo->type == MT_SKULL))
+        {
+            count++;
+        }
+	}
 
+	#else
 	currentthinker = thinkercap.next;
 	while (currentthinker != &thinkercap)
 	{
@@ -1138,6 +1153,7 @@ void A_PainShootSkull(mobj_t *actor, angle_t angle)//L80018194()
         }
 		currentthinker = currentthinker->next;
 	}
+	#endif // FIX_PE_SKULL_LIMIT
 
 	// if there are allready 20 skulls on the level,
 	// don't spit another one

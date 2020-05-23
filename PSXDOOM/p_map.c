@@ -255,6 +255,20 @@ void P_UseLines (player_t *player) //L8001B98C()
 	xh = (usebbox[BOXRIGHT ] - bmaporgx) >> MAPBLOCKSHIFT;
 	xl = (usebbox[BOXLEFT  ] - bmaporgx) >> MAPBLOCKSHIFT;
 
+	// Clamp these coords to the valid range of the blockmap to avoid potential undefined behavior near map edges
+	#if RANGE_CHECKS == 1
+    if (xl<0)
+        xl = 0;
+    if (yl<0)
+        yl = 0;
+
+    if (xh>= bmapwidth)
+        xh = bmapwidth -1;
+
+    if (yh>= bmapheight)
+        yh = bmapheight -1;
+    #endif // RANGE_CHECKS
+
 	closeline = NULL;
 	closedist = FRACUNIT;
 	validcount++;
@@ -402,7 +416,6 @@ angle_t		attackangle;    //aGp0000099c
 fixed_t		attackrange;    //fGp000009b4
 fixed_t		aimtopslope;    //uGp00000a14
 fixed_t		aimbottomslope; //uGp00000d0c
-int         enemyspecial;   //80077DB4
 
 /*=================== */
 /* */

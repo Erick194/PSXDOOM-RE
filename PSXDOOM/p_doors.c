@@ -153,7 +153,13 @@ boolean P_CheckKeyLock(line_t *line, mobj_t *thing)//L80015514()
 			player->message = "You need a blue key.";
 			S_StartSound(thing, sfx_oof);
 			if (player == &players[consoleplayer])
-				stbar.tryopen[it_bluecard] = true;
+            {
+                #if GH_UPDATES ==  1
+                stbar.tryopen[MapBlueKeyType] = true;
+                #else
+                stbar.tryopen[it_bluecard] = true;
+                #endif // GH_UPDATES
+            }
 			return false;
 		}
 		break;
@@ -166,7 +172,13 @@ boolean P_CheckKeyLock(line_t *line, mobj_t *thing)//L80015514()
 			player->message = "You need a yellow key.";
 			S_StartSound(thing, sfx_oof);
 			if (player == &players[consoleplayer])
-				stbar.tryopen[it_yellowcard] = true;
+            {
+                #if GH_UPDATES ==  1
+                stbar.tryopen[MapYellowKeyType] = true;
+                #else
+                stbar.tryopen[it_yellowcard] = true;
+                #endif // GH_UPDATES
+            }
 			return false;
 		}
 		break;
@@ -179,7 +191,13 @@ boolean P_CheckKeyLock(line_t *line, mobj_t *thing)//L80015514()
 			player->message = "You need a red key.";
 			S_StartSound(thing, sfx_oof);
 			if (player == &players[consoleplayer])
-				stbar.tryopen[it_redcard] = true;
+            {
+                #if GH_UPDATES ==  1
+                stbar.tryopen[MapRedKeyType] = true;
+                #else
+                stbar.tryopen[it_redcard] = true;
+                #endif // GH_UPDATES
+            }
 			return false;
 		}
 		break;

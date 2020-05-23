@@ -441,9 +441,9 @@ void A_ReFire (player_t *player, pspdef_t *psp)//L80020418()
 =================
 */
 
-boolean A_CheckReload(player_t *player, pspdef_t *psp)//L800204B4()
+void A_CheckReload(player_t *player, pspdef_t *psp)//L800204B4()
 {
-	return P_CheckAmmo(player);
+	P_CheckAmmo(player);
 }
 
 /*
@@ -549,9 +549,9 @@ void A_Punch (player_t *player, pspdef_t *psp) //L8002080C()
 	if (player->powers[pw_strength])
 		damage *= 10;
 	angle = player->mo->angle;
-	angle += (P_Random()-P_Random())<<18;
+	angle += (angle_t)(P_Random()-P_Random())<<18;
 	P_LineAttack (player->mo, angle, MELEERANGE, MAXINT, damage);
-/* turn to face target */
+    /* turn to face target */
 	if (linetarget)
 	{
 	    S_StartSound(player->mo, sfx_punch);
@@ -575,7 +575,7 @@ void A_Saw (player_t *player, pspdef_t *psp) //L80020904()
 
 	damage = ((P_Random ()&7)+1)*3;
 	angle = player->mo->angle;
-	angle += (P_Random()-P_Random())<<18;
+	angle += (angle_t)(P_Random()-P_Random())<<18;
 	/* use meleerange + 1 se the puff doesn't skip the flash */
 	P_LineAttack (player->mo, angle, MELEERANGE+1, MAXINT, damage);
 	if (!linetarget)

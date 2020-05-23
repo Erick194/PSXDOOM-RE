@@ -142,7 +142,7 @@ void IN_Start(void)//L8003C4D4()
 	acceleratestage = 0;
 	last_ticon = ticon;
 
-	if (nextmap < 60)
+	if (nextmap < LASTLEVEL)
 	{
 		Encode_Password(Passwordbuff);
 		#if GH_UPDATES == 1
@@ -319,7 +319,7 @@ void IN_SingleDrawer(void)//L8003CC54()
 	ST_DrawText(182, 117, "%");
 	ST_DrawValue(170, 117, secretvalue[0]);
 
-	if (nextmap < 60)
+	if (nextmap < LASTLEVEL)
 	{
 		ST_DrawText(-1, 145, "Entering");
 		ST_DrawText(-1, 161, mapnames[nextmap-1]);
@@ -370,7 +370,7 @@ void IN_CooperativeDrawer(void)//L8003CE24()
 	ST_DrawValue(143, 123, secretvalue[consoleplayer]);
 	ST_DrawValue(216, 123, secretvalue[(consoleplayer == 0) ? 1 : 0]);
 
-	if (nextmap < 60)
+	if (nextmap < LASTLEVEL)
 	{
 		ST_DrawText(-1, 149, "Entering");
 		ST_DrawText(-1, 165, mapnames[nextmap-1]);
@@ -445,7 +445,7 @@ void IN_DeathMachtDrawer(void)//L8003D1B8()
 	ST_DrawValue(133, 138, fragvalue[consoleplayer]);
 	ST_DrawValue(206, 138, fragvalue[(consoleplayer == 0) ? 1 : 0]);
 
-	if (nextmap < 60)
+	if (nextmap < LASTLEVEL)
 	{
 		ST_DrawText(-1, 190, "Entering");
 		ST_DrawText(-1, 206, mapnames[nextmap-1]);

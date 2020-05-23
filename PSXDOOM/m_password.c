@@ -5,6 +5,11 @@
 #include "st_main.h"
 #include "r_local.h"
 
+// [GEC] MASTER EDITION NEW FLAGS
+#define MAPUP1		0x20
+#define MAPUP2		0x40
+#define NIGHTMARE	0x80
+
 void Encode_Password(byte *buff)//L80037BBC()
 {
 	int i, j, shift, code, pos;
@@ -92,11 +97,23 @@ void Encode_Password(byte *buff)//L80037BBC()
 
 	#if ENABLE_NIGHTMARE == 1
 	//I used the ArmorType space to add the 0x80 flag to identify that the difficulty is nightmare
-	if(skillnightmare != 0)
-    {
+	if(skillnightmare != 0) {
         tmpbuff[5] |= 0x80;
     }
     #endif // ENABLE_NIGHTMARE
+
+     #if ENABLE_MOREMAPS == 1
+    //Enables the possibility of incorporating more maps, maximum 255
+    if(nextmap >= 192) {
+    	tmpbuff[5] |= (MAPUP1|MAPUP2);
+	}
+	else if(nextmap >= 128) {
+    	tmpbuff[5] |= MAPUP2;
+	}
+	else if(nextmap >= 64) {
+    	tmpbuff[5] |= MAPUP1;
+	}
+	#endif // ENABLE_MOREMAPS
 
 	//Encode Encrypt System
 	for (i = 0; i < 45;)
@@ -177,15 +194,26 @@ int Decode_Password(byte *inbuff, int *levelnum, int *skill, player_t *player)//
 
 		*levelnum = decbuff[0] >> 2;
 
-		if (*levelnum != 0 && (*levelnum < 60))
+		#if ENABLE_MOREMAPS == 1
+		if (decbuff[5] & MAPUP1) {
+            decbuff[5] &= ~MAPUP1;
+            *levelnum |= 64;
+        }
+        if (decbuff[5] & MAPUP2) {
+            decbuff[5] &= ~MAPUP2;
+            *levelnum |= 128;
+        }
+        #endif // ENABLE_MOREMAPS
+
+		if (*levelnum != 0 && (*levelnum < LASTLEVEL))
 		{
 			*skill = decbuff[0] & 3;
 
 			#if ENABLE_NIGHTMARE == 1
 			//Check that the flag is 0x80, add the nightmare difficulty and remove the flag 0x80
-			if (decbuff[5] & 0x80)
+			if (decbuff[5] & NIGHTMARE)
             {
-                decbuff[5] &= ~0x80;
+                decbuff[5] &= ~NIGHTMARE;
                 *skill = sk_nightmare;
             }
 			#endif // ENABLE_NIGHTMARE

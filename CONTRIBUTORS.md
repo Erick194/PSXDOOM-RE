@@ -78,6 +78,32 @@
          
       * Range checks, added from Psy Doom to avoid alterations in P_RadiusAttack
          https://github.com/BodbDearg/PsyDoom/commit/107f7d3d91824e06f3b9e5106e3498e98a590ebe
+      
+      * P_FindNextHighestFloor: rewritten to avoid possible undefined behavior, from PsyDoom
+         https://github.com/BodbDearg/PsyDoom/commit/91a3cc54e050d1ebba3572fb935a2625717ee21f
+
+      * P_CheckKeyLock and P_SpawnSpecials: added skull key detection code from Greatest Hits version, also fatal BUFFER OVERFLOW is corrected in the D_memset assignment in activeceilings and activeplats
+         https://github.com/BodbDearg/PsyDoom/commit/227fbaddf5237088d236865169cb2cae995043a5
+         https://github.com/BodbDearg/PsyDoom/commit/f9e7295f63a2757f68bca66eb83661de71b184e5
+
+      * P_SpawnStrobeFlashFast: Fixed `minlight` and` maxlight` assignments, as they were reversed.
+         https://github.com/BodbDearg/PsyDoom/commit/8dec4ccbbd73d278b7b1d0d8e1090b0e39ad539d
+
+      * T_CountdownTimer: Correction of regressive count, the code towards which an extra tick will be delayed to carry out the action
+         https://github.com/BodbDearg/PsyDoom/commit/890d7dd90474b837d552b45cd38d737f11f7477f
+
+      * P_UseLines: Another blockmap check ranges is added
+         https://github.com/BodbDearg/PsyDoom/commit/ea5f99886ae054ac89c88dc961402b681a5b1562
+
+      * A_CheckReload: Eliminate the return status and change a "void" like in Doom PC, since it's return is unnecessary.
+         https://github.com/BodbDearg/PsyDoom/commit/7c6d6d851cd6f7f9ac6c3ddd04ce37c8ca53632b
+
+      * A_Punch and A_Saw: (angle_t) identification is added before (P_Random () - P_Random ()), in order to avoid demo desynchronization
+         https://github.com/BodbDearg/PsyDoom/commit/7b3d77fdb689f98808faf7a0d3a77f80556dd079
+         https://github.com/BodbDearg/PsyDoom/commit/dc56fa6d91ee6d8f54aa11e9053fafd85ddad7f3
+
+      * Suggestion to create a code to increase the map limit to 255
+         https://github.com/BodbDearg/PsyDoom/commit/78436a90bfb8e2318141c13bce2e9c8f313af814
 
 * **[Fabien Sanglard](https://github.com/fabiensanglard)**
 
