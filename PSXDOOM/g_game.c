@@ -225,7 +225,7 @@ void G_DoReborn (int playernum)//80013044
 	int selections;
 	fixed_t      x, y;
 	subsector_t *ss;
-	int          an;
+	unsigned int an;
 	mobj_t      *mo;
 	mapthing_t *mthing;
 
@@ -235,19 +235,22 @@ void G_DoReborn (int playernum)//80013044
 		return;
 	}
 
-	//printf("G_DoReborn %d\n",playernum);
-
 	/* */
 	/* respawn this player while the other players keep going */
 	/* */
 	if (players[playernum].mo->player != 0)
 		players[playernum].mo->player = NULL;   /* dissasociate the corpse  */
 
+	/* */
+    /* default player spawn point */
+    /* */
+    mthing = &playerstarts[playernum];
+
+    /* */
 	/* spawn at random spot if in death match  */
+	/* */
 	if (netgame == gt_deathmatch)
 	{
-		/*G_DeathMatchSpawnPlayer (playernum);
-		return; */
 		selections = (int)(deathmatch_p - deathmatchstarts);
 		for (j = 0; j < 16; j++)
 		{
@@ -258,11 +261,9 @@ void G_DoReborn (int playernum)//80013044
 
 			if (P_CheckPosition(players[playernum].mo, x, y))
 			{
-				deathmatchstarts[i].type = playernum + 1;
-				P_SpawnPlayer(&deathmatchstarts[i]);
-				playerstarts[i].type = i + 1;//psx
 				mthing = &deathmatchstarts[i];
-				goto spawnfog;
+				mthing->type = playernum + 1;
+				break;
 			}
 		}
 	}
@@ -271,9 +272,11 @@ void G_DoReborn (int playernum)//80013044
 		x = playerstarts[playernum].x << FRACBITS;
 		y = playerstarts[playernum].y << FRACBITS;
 
+		/* */
+		/* try to spawn at one of the other players spots */
+		/* */
 		if (!P_CheckPosition(players[playernum].mo, x, y))
 		{
-			// try to spawn at one of the other players spots
 			for (i = 0; i < MAXPLAYERS; i++)
 			{
 				x = playerstarts[i].x << FRACBITS;
@@ -281,50 +284,45 @@ void G_DoReborn (int playernum)//80013044
 
 				if (P_CheckPosition(players[playernum].mo, x, y))
 				{
-					playerstarts[i].type = playernum + 1;
-					P_SpawnPlayer(&playerstarts[i]);
-					playerstarts[i].type = i + 1;
-					mthing = &playerstarts[i];
-					goto spawnfog;
+				    mthing = &playerstarts[i];
+					mthing->type = playernum + 1;
+					break;
 				}
 			}
 		}
 	}
 
-	// he's going to be inside something.  Too bad.
-	P_SpawnPlayer(&playerstarts[playernum]);
-	mthing = &playerstarts[playernum];
+	/* */
+	/* he's going to be inside something.  Too bad. */
+	/* */
+	P_SpawnPlayer(mthing);
 
-spawnfog:
+	/* */
+	/* Restore all cooperative starts back to having their previous type, if we modified them. */
+    /* The co-op spawn logic assumes the type is correct for the corresponding player index. */
+	/* */
+	for (i=0 ; i<MAXPLAYERS ; i++)
+    {
+        playerstarts[i].type = i+1;             /* restore  */
+    }
+
 	x = mthing->x << FRACBITS;
 	y = mthing->y << FRACBITS;
 
+
+	/* */
+	/* This mask wraps the fine angle for the map thing and restricts it to the 8 diagonal directions */
+    /* */
+    #define FINE_ANGLE_MASK (FINEANGLES - (FINEANGLES / 8))
+
 	ss = R_PointInSubsector(x, y);
-	//an = (((ANG45 * (mthing->angle/45)) >> ANGLETOFINESHIFT) * 4) & 0x7000;
-	an = ((ANG45 * (mthing->angle / 45)) >> ANGLETOFINESHIFT) * 128 & 0x7000;
+	an = ((ANG45 * (mthing->angle / 45)) >> ANGLETOFINESHIFT) & FINE_ANGLE_MASK;
 
-	// spawn a teleport fog
+	/* */
+	/* spawn a teleport fog */
+	/* */
 	mo = P_SpawnMobj(x + 20 * finecosine[an], y + 20 * finesine[an], ss->sector->floorheight, MT_TFOG);
-	S_StartSound(mo, sfx_telept); //sfx_telept = 27
-
-#if 0
-	if (G_CheckSpot (playernum, &playerstarts[playernum]) )
-	{
-		P_SpawnPlayer (&playerstarts[playernum]);
-		return;
-	}
-	/* try to spawn at one of the other players spots  */
-	for (i=0 ; i<MAXPLAYERS ; i++)
-		if (G_CheckSpot (playernum, &playerstarts[i]) )
-		{
-			playerstarts[i].type = playernum+1;		/* fake as other player  */
-			P_SpawnPlayer (&playerstarts[i]);
-			playerstarts[i].type = i+1;             /* restore  */
-			return;
-		}
-	/* he's going to be inside something.  Too bad.  */
-	P_SpawnPlayer (&playerstarts[playernum]);
-#endif
+	S_StartSound(mo, sfx_telept);
 }
 
 
