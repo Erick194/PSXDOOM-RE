@@ -3,18 +3,20 @@
 /* Fixes and Version Update Here*/
 // NEWS (PsyDoom) and ([GEC] Master Edition)
 #define SHOWFPS 1
-#define ENABLE_NIGHTMARE    1       // Originally Activated in the project [GEC] Master Edition
+#define ENABLE_NIGHTMARE    1       // Originally Activated in the project [GEC] Master Edition.
 #define ENABLE_MOREMAPS		1       // Enable the increase of map limits, important note you need to change the #define LASTLEVEL to the desired value the limit is up to 255.
-#define P_FNHF_UPDATE       1       // PsyDoom P_FindNextHighestFloor new code logic
+#define P_FNHF_UPDATE       1       // PsyDoom P_FindNextHighestFloor new code logic.
+
 
 //FIXES
-#define FIX_LINEDEFS_DELETION   1   // Fixes for the 'linedef deletion' bug. From PsyDoom
-#define RANGE_CHECKS    1           // Only if necessary to avoid alterations in the game
-#define FIX_ML_DONTDRAW 1           // Automap: fix a PSX DOOM bug where lines flagged with ML_DONTDRAW would draw when the computer map powerup is obtained. From PsyDoom
+#define FIX_LINEDEFS_DELETION   1   // Fixes for the 'linedef deletion' bug. From PsyDoom.
+#define RANGE_CHECKS    1           // Only if necessary to avoid alterations in the game.
+#define FIX_ML_DONTDRAW 1           // Automap: fix a PSX DOOM bug where lines flagged with ML_DONTDRAW would draw when the computer map powerup is obtained. From PsyDoom.
 #define FIX_PE_SKULL_LIMIT 1        // Fixes code error when limiting lost souls, converting Doom 2 pc function to PsxDoom (based on Jaguar Doom), code is incompatible, fixes based on repair done for Psx Final Doom.
+#define FIX_FLATSPANS   1           // Precision fix for large open maps, to prevent cracks at the right of the screen. From PsyDoom.
 
 //UPDATES
-#define GH_UPDATES  1               // Psx Doom Greatest Hits Updates
+#define GH_UPDATES  1               // Psx Doom Greatest Hits Updates.
 
 #define	VINT	int
 

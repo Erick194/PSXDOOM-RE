@@ -899,6 +899,12 @@ void R_Render_Plane(vleaf_t *vlf1, int zheight, psxobj_t *psxobj)
 	unsigned long *v_yy;
 	xpos_t *xtable;
 
+	#if FIX_FLATSPANS == 1
+        int origSpanR;
+        int origSpanUR;
+        int origSpanVR;
+    #endif
+
 	POLY_FT3 *planepoly = (POLY_FT3*) getScratchAddr(128);//1F800200
 
 	lf1 = vlf1->lf;
@@ -1126,11 +1132,33 @@ void R_Render_Plane(vleaf_t *vlf1, int zheight, psxobj_t *psxobj)
 				delta2 = ((vx2 - vx1) / linecnt);
 				delta3 = ((vy2 - vy1) / linecnt);
 
+				// From PsyDoom: precision fix to prevent cracks at the right side of the screen on large open maps like 'Tower Of Babel'.
+                // Store the coords where the last span should end, and use those for the right side of the last span instead of
+                // the somewhat truncated/imprecise stepped coords.
+                //
+                // TODO: make this tweak configurable according to user prefs.
+                #if FIX_FLATSPANS == 1
+                    origSpanR = x2;
+                    origSpanUR = vx2;
+                    origSpanVR = vy2;
+                #endif
+
 				for (j = 0; j < linecnt; j++)
 				{
 					x2 = (x1 + delta1);
 					vx2 = (vx1 + delta2);
 					vy2 = (vy1 + delta3);
+
+					// From PsyDoom: precision fix to prevent cracks at the right side of the screen on large open maps like 'Tower Of Babel'.
+                    // TODO: make this tweak configurable according to user prefs.
+                    #if FIX_FLATSPANS == 1
+                        if ((j + 1) >= linecnt)
+                        {
+                            x2 = origSpanR;
+                            vx2 = origSpanUR;
+                            vy2 = origSpanVR;
+                        }
+                    #endif
 
 					xpos = 0;
 					if ((vx1 < vx2) && (vx2 < 256) == 0)

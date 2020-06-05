@@ -105,6 +105,9 @@
       * Suggestion to create a code to increase the map limit to 255
          https://github.com/BodbDearg/PsyDoom/commit/78436a90bfb8e2318141c13bce2e9c8f313af814
 
+      * Floor rendering fix, from PsyDoom
+         https://github.com/BodbDearg/PsyDoom/commit/2a0250ca6b43d920706849d0d9018cc4656cb1f1
+
 * **[Fabien Sanglard](https://github.com/fabiensanglard)**
 
    * Article **[The Polygons of Doom: PSX](http://fabiensanglard.net/doom_psx/index.html)**
