@@ -399,8 +399,8 @@ void ST_Drawer (void)//L80038888();
 	/* */
 	if (stbar.messagedelay > 0)
 	{
-	    //In Psx Doom Greatest Hits and Final Doom, the value of position X was changed to 7
-	    #if GH_UPDATES == 1
+	    	//In Psx Doom Greatest Hits and Final Doom, the value of position X was changed to 7
+	    	#if GH_UPDATES == 1
 		ST_DrawMessage(7, 193, stbar.message);
 		#else
 		ST_DrawMessage(2, 193, stbar.message);
@@ -408,11 +408,16 @@ void ST_Drawer (void)//L80038888();
 	}
 	else if (player->automapflags & AF_ACTIVE)
 	{
-	    /* */
-        /* Draw Map Name Message */
-        /* */
+		/* */
+		/* Draw Map Name Message */
+		/* */
 		sprintf(text, "LEVEL %d:%s", gamemap, mapnames[gamemap-1]);
+		//In Psx Doom Greatest Hits and Final Doom, the value of position X was changed to 7
+	   	 #if GH_UPDATES == 1
+		ST_DrawMessage(7, 193, text);
+		#else
 		ST_DrawMessage(2, 193, text);
+		#endif // GH_UPDATES
 	}
 
 	/* */
