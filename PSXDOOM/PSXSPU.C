@@ -231,7 +231,7 @@ void psxspu_set_master_vol(int vol)//800455F0
     psxspu_master_vol = vol;
 	psxspu_master_vol_fixed = psxspu_master_vol << 16;
 	psxspu_master_fadecount = 0;
-	psxspu_set_master_vol(psxspu_master_vol);
+	psxspu_set_master_volume(psxspu_master_vol);
 	psxspu_status = 1;
 }
 
