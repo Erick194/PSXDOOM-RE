@@ -1055,6 +1055,7 @@ void A_FatAttack3(mobj_t *actor)//L80017E50()
 	int	    an;
 
 	A_FaceTarget(actor);
+	target = actor->target; // [9/2/2021] haleyjd: add missing assignment
 
 	mo = P_SpawnMissile(actor, target, MT_FATSHOT);
 	mo->angle -= FATSPREAD / 2;
