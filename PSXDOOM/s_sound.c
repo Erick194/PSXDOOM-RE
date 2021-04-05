@@ -504,10 +504,10 @@ void S_AdjustSoundParams(mobj_t *origin, int sound_id, TriggerPlayAttr *attr)//8
     }
 
     //Check Reverb Flag Sector
-    if (!origin || (origin->subsector->sector->flags & REVERB_OFF))
-        t_attr.reverb = 127;
-    else
+    if (origin && (origin->subsector->sector->flags & REVERB_OFF))
         t_attr.reverb = 0;
+    else
+        t_attr.reverb = 127;
 
     t_attr.mask = (TRIGGER_VOLUME|TRIGGER_PAN|TRIGGER_REVERB);
     t_attr.volume = vol;
