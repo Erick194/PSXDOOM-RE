@@ -374,7 +374,7 @@ int wess_load_module (void *wmd_ptr,
 	pmem += sizeof(*pm_stat);
 
 	pm_stat->fp_module = (int)fp_wmd_file;//falta verificar
-	pm_stat->pabstime = &millicount;
+	pm_stat->pabstime = (unsigned long*)&millicount;
 
 	/*
 	- allocate for the module_data structure
@@ -977,10 +977,10 @@ int wess_load_module (void *wmd_ptr,
 	for (i = 0; i<pm_stat->pmod_info->mod_hdr.trk_work_areas; i++)
 	{
 		(pm_stat->ptrkstattbl + i)->refindx = i;
-		(pm_stat->ptrkstattbl + i)->psubstack = (unsigned long *)pmem;
+		(pm_stat->ptrkstattbl + i)->psubstack = (unsigned char**)pmem;
 		/* (pm_stat->ptrkstattbl+i)->psp is set when sequence is triggered */
 		pmem += sizeof(long) * pm_stat->max_substack_pertrk;
-		(pm_stat->ptrkstattbl + i)->pstackend = (unsigned long *)pmem;
+		(pm_stat->ptrkstattbl + i)->pstackend = (unsigned char**)pmem;
 	}
 
 	/* load the drivers here */

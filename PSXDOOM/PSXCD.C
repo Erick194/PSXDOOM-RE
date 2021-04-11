@@ -416,8 +416,8 @@ void psxcd_init(void)//8003F620
 
     init_pos = 0;
     async_on = 0;
-    cbsyncsave = CdSyncCallback(cbcomplete);
-    cbreadysave = CdReadyCallback(cbready);
+    cbsyncsave = (u_long)CdSyncCallback((CdlCB)cbcomplete);
+    cbreadysave = (u_long)CdReadyCallback((CdlCB)cbready);
 
     psxcd_enable_callbacks();
 

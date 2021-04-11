@@ -259,9 +259,9 @@ typedef struct
 	unsigned char	*pstart;		//*48   //12
 	unsigned char	*ppos;			//*52   //13
 	unsigned long   *plabellist;	//*56   //14
-	unsigned long   *psubstack;		//*60   //15
-	unsigned char	*psp;			//*64   //16
-	unsigned long   *pstackend;		//*68   //17
+	unsigned char   **psubstack;	//*60   //15
+	unsigned char   **psp;			//*64   //16
+	unsigned char   **pstackend;	//*68   //17
 	unsigned int	data_size;		//*72   //18
 	unsigned int	data_space;		//*76   //19
 }track_status;
