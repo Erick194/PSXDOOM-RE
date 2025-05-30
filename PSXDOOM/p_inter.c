@@ -364,7 +364,7 @@ void P_TouchSpecialThing (mobj_t *special, mobj_t *toucher)//L80019C24()
 	case SPR_SBOX:
 		if (!P_GiveAmmo (player, am_shell,5))
 			return;
-		player->message = "Picked up a box of shotgun shells.";
+		player->message = "Picked up a box of shells.";
 		break;
 	case SPR_BPAK:
 		if (!player->backpack)
